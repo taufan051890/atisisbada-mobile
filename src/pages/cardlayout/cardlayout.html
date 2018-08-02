@@ -1,0 +1,87 @@
+<!--
+  Generated template for the CardlayoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar hideBackButton>
+      <ion-title *ngFor="let itemNama of data;  let i=index">
+        <div *ngIf="i < 1">
+            {{ itemNama.namaPage }}
+        </div>
+      </ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="loadUser()" style="color: white;">
+           <ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="home()" style="color: white;">
+          <ion-icon name="md-arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content class="cards-bg">
+
+<ion-card  *ngFor="let item of data" >
+
+
+
+  <ion-slides pager *ngIf="item.namaPage != 'Page Tidak Ada!'">
+    <div *ngFor="let itemGalery of dataGalery">
+        <ion-slide *ngIf="item.id == itemGalery.id_menu">
+            <img  src="http://123.231.253.228/atis/pages/api/api/images/Colored/{{ itemGalery.gambar }}" />
+        </ion-slide>
+     <!-- <img *ngIf="item.id != itemGalery.id_menu" src="http://taufantritama.com/api/images/Colored/Default.png"/>       -->
+    </div>
+
+
+  </ion-slides>
+
+  <ion-card-content *ngIf="item.namaPage != 'Page Tidak Ada!'">
+    <ion-card-title>
+      {{ item.nama }}
+    </ion-card-title>
+    <p>
+      {{ item.deskripsi }}
+    </p>
+  </ion-card-content>
+
+  <ion-row no-padding *ngIf="item.namaPage != 'Page Tidak Ada!'">
+    <ion-col>
+      <button ion-button clear small color="danger" icon-start (click)="page(item.id)">
+        <ion-icon name='search'></ion-icon>
+        View More
+      </button>
+    </ion-col>
+
+    <ion-col>
+        <button style="color: #00c2ff;" ion-button clear small color="danger" icon-start (click)="takePhotoGalery(item.id)">
+            <ion-icon ios="ios-images" md="md-images"></ion-icon>
+          Upload
+        </button>
+      </ion-col>
+
+    <ion-col>
+        <button style="color: #007aff;" ion-button clear small color="danger" icon-start (click)="takePhoto(item.id)">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          Foto
+        </button>
+      </ion-col>
+
+  </ion-row>
+
+
+</ion-card>
+
+
+
+
+</ion-content>

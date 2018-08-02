@@ -1,0 +1,259 @@
+<!--
+  Generated template for the Rekap2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+        <ion-navbar hideBackButton>
+
+                <button ion-button icon-only menuToggle>
+                  <ion-icon name="menu"></ion-icon>
+                </button>
+                
+                    <ion-title>Rekap</ion-title>
+               
+                <ion-buttons end>
+                        <a ion-button icon-only (click)="openPopover($event)">
+                        <ion-icon name="more"></ion-icon>
+                    </a>
+                </ion-buttons>
+          
+            </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+        <div *ngIf="c1nama != undefined">
+                <ion-item  text-wrap (click)="toggleGroup1(i)" style=" background: #fff8f8; ">
+                        <ion-label class="label label-md" style="min-height: 29px; padding-bottom: 0%; padding-top: 1%;">
+                                <b>
+                                <h2>
+                                    SKPD	
+                                    <ion-icon color="success" item-right [name]="isGroupShown1(i) ? 'arrow-dropdown' : 'arrow-dropright'" 
+                                    style="
+                                    color: #d49624;
+                                    text-align:  right;
+                                    float:  right;
+                                    ">
+                                </ion-icon>
+                                </h2>
+                                </b>
+                                </ion-label>
+                            </ion-item>
+                            <div *ngIf="isGroupShown1(i)"> 
+                            
+                                <ion-item text-wrap  style="background: #fbfbfb;">
+                                <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                        URUSAN
+                                    </h3></b>
+                                <h4 style="font-size: 12px;  margin-left: 6px;">
+                                    {{ c1nama }}
+                                </h4>
+                        </ion-item>
+                
+                            <ion-item text-wrap  style="background: #fbfbfb;">
+                                    <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                            BIDANG
+                                        </h3></b>
+                                    <h4 style="font-size: 12px;  margin-left: 6px;">
+                                        {{ cnama }}
+                                    </h4>
+                            </ion-item>
+                
+                        <ion-item text-wrap  style="background: #fbfbfb;">
+                            <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                    SKPD
+                                </h3></b>
+                            <h4 style="font-size: 12px;  margin-left: 6px;">
+                                {{ dnama }}
+                            </h4>
+                        </ion-item>
+        
+                        <ion-item text-wrap  style="background: #fbfbfb;">
+                                <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                        UNIT
+                                    </h3></b>
+                                <h4 style="font-size: 12px;  margin-left: 6px;">
+                                    {{ enama }}
+                                </h4>
+                        </ion-item>
+        
+                        <ion-item text-wrap  style="background: #fbfbfb;">
+                                <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                        SUB UNIT
+                                    </h3></b>
+                                <h4 style="font-size: 12px;  margin-left: 6px;">
+                                    {{ e1nama }}
+                                </h4>
+                        </ion-item>
+                                
+                                        
+                </div>
+            </div>
+        
+            <div *ngIf="c1nama == undefined">
+                    <ion-item  text-wrap (click)="toggleGroup1(i)" style=" background: #fff8f8; ">
+                            <ion-label class="label label-md" style="min-height: 29px; padding-bottom: 0%; padding-top: 1%;">
+                                    <b>
+                                    <h2>
+                                        SKPD	
+                                        <ion-icon color="success" item-right [name]="isGroupShown1(i) ? 'arrow-dropdown' : 'arrow-dropright'" 
+                                        style="
+                                        color: #d49624;
+                                        text-align:  right;
+                                        float:  right;
+                                        ">
+                                    </ion-icon>
+                                    </h2>
+                                    </b>
+                                    </ion-label>
+                                </ion-item>
+                                <div *ngIf="isGroupShown1(i)"> 
+                                
+                                    <ion-item text-wrap  style="background: #fbfbfb;">
+                                    <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                            URUSAN
+                                        </h3></b>
+                                    <h4 style="font-size: 12px;  margin-left: 6px;">
+                                        {{ c1namaSKPDOperator }}
+                                    </h4>
+                            </ion-item>
+                    
+                                <ion-item text-wrap  style="background: #fbfbfb;">
+                                        <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                                BIDANG
+                                            </h3></b>
+                                        <h4 style="font-size: 12px;  margin-left: 6px;">
+                                            {{ cnamaSKPDOperator }}
+                                        </h4>
+                                </ion-item>
+                    
+                            <ion-item text-wrap  style="background: #fbfbfb;">
+                                <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                        SKPD
+                                    </h3></b>
+                                <h4 style="font-size: 12px;  margin-left: 6px;">
+                                    {{ dnamaSKPDOperator }}
+                                </h4>
+                            </ion-item>
+            
+                            <ion-item text-wrap  style="background: #fbfbfb;">
+                                    <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                            UNIT
+                                        </h3></b>
+                                    <h4 style="font-size: 12px;  margin-left: 6px;">
+                                        {{ enamaSKPDOperator }}
+                                    </h4>
+                            </ion-item>
+            
+                            <ion-item text-wrap  style="background: #fbfbfb;">
+                                    <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                                            SUB UNIT
+                                        </h3></b>
+                                    <h4 style="font-size: 12px;  margin-left: 6px;">
+                                        {{ e1namaSKPDOperator }}
+                                    </h4>
+                            </ion-item>
+                                    
+                                            
+                    </div>
+                </div>
+      
+
+        
+    <ion-grid>
+          <ion-row>
+              <ion-col col-1 style="
+              padding: 2px;
+              border-top: 1px solid #1f1f1f;
+              border-left: 1px solid #1f1f1f;
+              border-bottom: 1px solid #1f1f1f;
+              background: #7eddec;
+              text-align:  center;">
+                  <b><h6>No</h6></b>
+              </ion-col>
+  
+              <ion-col col-11 style="
+              padding: 2px;
+              border: 1px solid #1f1f1f;
+              background: #7eddec;">
+                  <b><h6>Nama Barang</h6></b>
+              </ion-col>
+  
+              <!-- <ion-col col-1 style="padding: 2px">
+                  <ion-buttons end>
+                      <button ion-button icon-only (click)="action()" style="color: black;background-color: #ff000000;box-shadow: none;">
+                      <ion-icon ios="ios-more" md="md-more"></ion-icon>
+                      </button>
+                      
+                  </ion-buttons>
+              </ion-col> -->
+          </ion-row>
+  
+              <ion-row *ngFor="let item of data" [ngClass]="animateClass">
+                  <ion-col col-1 *ngIf="item.no != 'no'" style="
+                  padding: 2px;
+                  border-top: 1px solid #1f1f1f;
+                  border-left: 1px solid #1f1f1f;
+                  border-bottom: 1px solid #1f1f1f;
+                  text-align:  center;
+                  background: #f3fdff;">
+                      <h6 class="kolom"> {{ item.no }}</h6>
+                  </ion-col>
+  
+                  <ion-col col-10 *ngIf="item.no != 'no'" style="
+                  padding: 2px;
+                  border-top: 1px solid #1f1f1f;
+                  border-left: 1px solid #1f1f1f;
+                  border-bottom: 1px solid #1f1f1f;
+                  background: #f3fdff;">
+                      <h6 class="kolom">{{ item.nm_barang }}</h6>
+                  </ion-col>
+  
+                  <ion-col col-1 *ngIf="item.no != 'no'" style="
+                  padding: 2px;
+                  border-top: 1px solid #1f1f1f;
+                  border-right: 1px solid #1f1f1f;
+                  border-bottom: 1px solid #1f1f1f;
+                  text-align:  center;
+                  background: #f3fdff;" (click)="action(item.nm_barang,item.f,item.g,item.h,item.i,item.j,item.j1)">
+                  <h6 class="kolom"><ion-icon name="arrow-round-forward" style="color: #f19d36;"></ion-icon></h6>
+                  </ion-col>                  
+              </ion-row>
+              <ion-row *ngFor="let item of data">
+                  <ion-col col-12 style="
+                  padding: 2px;
+                  border: 1px solid #1f1f1f;
+                  text-align:  center;
+                  background: #f3fdff;"  *ngIf="item.no == 'no'">
+                  <h6 class="kolom">Data Tidak ada</h6>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+          <ion-card>
+            </ion-card>
+            <ion-card>    
+            </ion-card>
+
+            <ion-card>
+            </ion-card>
+            <ion-card>    
+            </ion-card>
+          <ion-fab bottom *ngIf="c1namaSKPDOperator == undefined" style="width: 100%; bottom: 0; text-align:  center; background: #f19d36;">
+            <ion-row>                    
+                    <ion-col icon-start (click)="cariSkpd()">
+                        <button style="color: #fff; font-size: 13px;" ion-button clear small color="danger" >
+                            <span style="color: #fff; font-size: 13px !important;">
+                                <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                                FILTER SKPD
+                            </span>  
+                        </button>
+                   </ion-col>
+            </ion-row>
+          </ion-fab>
+          
+  </ion-content>
+  

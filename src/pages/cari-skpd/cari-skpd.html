@@ -1,0 +1,97 @@
+<!--
+  Generated template for the CariSkpdPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-toolbar>
+      <ion-title>
+        FILTER SKPD
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <span ion-text color="primary" showWhen="ios">Cancel</span>
+          <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- <ion-list-header *ngIf="urusanSession != 'undefined'" style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+    SKPD
+  </ion-list-header>
+  <ion-item *ngIf="urusanSession != 'undefined'" style="padding:  0; ">
+    <ion-label stacked>Urusan : </ion-label>
+    <ion-select class="ion-select1" (ionChange)="changeBidang()"  [(ngModel)]="dataSelect.urusan" name="urusan" placeholder="{{dataUrusanSession}}">
+   
+      <ion-option *ngFor="let urusan of dataUrusan"  value="{{ urusan.c1 }}">{{ urusan.nama }}</ion-option>
+    </ion-select>
+  </ion-item> -->
+
+  <ion-list-header *ngIf="skpdOperator == 'undefined'" style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+    SKPD
+  </ion-list-header>
+  <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+    <ion-label  floating>Urusan : </ion-label>
+    <ion-select class="ion-select1" (ionChange)="changeBidang()"  [(ngModel)]="dataSelect.urusan" name="urusan">
+        <!-- [(ngModel)]="dataUrusan" -->
+          <ion-option value=""></ion-option>
+          <ion-option *ngFor="let urusan of dataUrusan" value="{{ urusan.c1 }}">{{ urusan.nama }}</ion-option>
+
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+      <ion-label  floating>Bidang : </ion-label>
+      <ion-select class="ion-select1" (ionChange)="changeSKPD()"  [(ngModel)]="dataSelect.bidang" name="bidang">
+          <!-- [(ngModel)]="dataUrusan" -->
+          <ion-option value=""></ion-option>
+        <ion-option *ngFor="let bidang of dataBidang"  value="{{ bidang.c }}">{{ bidang.nama }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+        <ion-label floating>SKPD : </ion-label>
+        <ion-select class="ion-select1" (ionChange)="changeUnit()"  [(ngModel)]="dataSelect.SKPD" name="SKPD">
+            <!-- [(ngModel)]="dataUrusan" -->
+            <ion-option value=""></ion-option>
+          <ion-option *ngFor="let SKPD of dataSKPD"  value="{{ SKPD.d }}">{{ SKPD.nama }}</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+      <ion-label floating>UNIT : </ion-label>
+      <ion-select class="ion-select1" (ionChange)="SubUnit()"  [(ngModel)]="dataSelect.unit" name="unit">
+          <!-- [(ngModel)]="dataUrusan" -->
+          <ion-option value=""></ion-option>
+        <ion-option *ngFor="let unit of dataUnit"  value="{{ unit.e }}">{{ unit.nama }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+      <ion-label floating>SUB UNIT : </ion-label>
+      <ion-select class="ion-select1" [(ngModel)]="dataSelect.subunit" name="subunit">
+          <!-- [(ngModel)]="dataUrusan" -->
+          <ion-option value=""> </ion-option>
+        <ion-option *ngFor="let subunit of dataSubUnit"  value="{{ subunit.e1 }}">{{ subunit.nama }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-fab bottom (click)="submit()" style="width: 100%; bottom: 0; text-align:  center; background: #f19d36;">
+      <ion-row>
+              <ion-col style="padding:  3%;font-size: 13px;color: #fff;">
+                OKE
+             </ion-col>
+      </ion-row>
+    </ion-fab>
+
+</ion-content>

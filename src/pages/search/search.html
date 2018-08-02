@@ -1,0 +1,1280 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-content">
+
+  <ion-navbar>
+      <ion-title *ngFor="let itemNama of data;  let i=index" style="text-align: left;">
+          <div *ngIf="i < 1">
+              {{ itemNama.namaPage }}
+          </div>
+        </ion-title>
+
+        <!-- <ion-buttons end>
+          <button ion-button icon-only (click)="ionViewDidLoad()" style="color: white;">
+             <ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
+          </button>
+        </ion-buttons> -->
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <div  *ngFor="let item of data;  let i=index">
+<div *ngIf="i < 1" style="text-align:right;">
+ <div *ngIf="item.cuih == 'hiloh'">
+    <ion-list inset>
+      <div  *ngFor="let itemInput of data;  let i=index">
+          <div *ngIf="i < 1">
+            <ion-list-header *ngIf="skpdOperator == 'undefined'" style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+              SKPD
+            </ion-list-header>
+            <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+              <ion-label  floating>Urusan : </ion-label>
+              <ion-select class="ion-select1" (ionChange)="changeBidang()"  [(ngModel)]="dataSelect.urusan" name="urusan">
+                  <!-- [(ngModel)]="dataUrusan" -->
+                  <ion-option value=""></ion-option>
+                <ion-option *ngFor="let urusan of dataUrusan"  value="{{ urusan.c1 }}">{{ urusan.nama }}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+                <ion-label  floating>Bidang : </ion-label>
+                <ion-select class="ion-select1" (ionChange)="changeSKPD()"  [(ngModel)]="dataSelect.bidang" name="bidang">
+                    <!-- [(ngModel)]="dataUrusan" -->
+                    <ion-option value=""></ion-option>
+                  <ion-option *ngFor="let bidang of dataBidang"  value="{{ bidang.c }}">{{ bidang.nama }}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+                  <ion-label floating>SKPD : </ion-label>
+                  <ion-select class="ion-select1" (ionChange)="changeUnit()"  [(ngModel)]="dataSelect.SKPD" name="SKPD">
+                      <!-- [(ngModel)]="dataUrusan" -->
+                      <ion-option value=""></ion-option>
+                    <ion-option *ngFor="let SKPD of dataSKPD"  value="{{ SKPD.d }}">{{ SKPD.nama }}</ion-option>
+                  </ion-select>
+              </ion-item>
+
+              <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+                <ion-label floating>UNIT : </ion-label>
+                <ion-select class="ion-select1" (ionChange)="SubUnit()"  [(ngModel)]="dataSelect.unit" name="unit">
+                    <!-- [(ngModel)]="dataUrusan" -->
+                    <ion-option value=""></ion-option>
+                  <ion-option *ngFor="let unit of dataUnit"  value="{{ unit.e }}">{{ unit.nama }}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item *ngIf="skpdOperator == 'undefined'" style="padding:  0; ">
+                <ion-label floating>SUB UNIT : </ion-label>
+                <ion-select class="ion-select1" [(ngModel)]="dataSelect.subunit" name="subunit">
+                    <!-- [(ngModel)]="dataUrusan" -->
+                    <ion-option value=""></ion-option>
+                  <ion-option *ngFor="let subunit of dataSubUnit"  value="{{ subunit.e1 }}">{{ subunit.nama }}</ion-option>
+                </ion-select>
+              </ion-item>
+        
+          <!-- KIB A -->
+        
+        <div *ngIf="data[0].namaTable == 'view_kib_a'">
+          <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+            LOKASI
+          </ion-list-header>
+        
+          <ion-item *ngIf="itemInput.nama3">
+              <ion-label floating> {{ itemInput.nama3 }} : </ion-label>
+              <ion-input type="text" name="field3" [(ngModel)]="datas.field3"></ion-input>
+        </ion-item> 
+
+        <ion-item  style="padding:  0;">
+            <ion-label floating>Kabupaten / Kota : </ion-label>
+            <ion-select class="ion-select2" (ionChange)="changeKec()"  [(ngModel)]="dataSelect.kota" name="kota">
+                <!-- [(ngModel)]="dataUrusan" -->
+              <ion-option *ngFor="let kota of dataKota"  value="{{ kota.kd_kota }}">{{ kota.nama }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item style="padding:  0;">
+          <ion-label  >Kecamatan : </ion-label>
+          <ion-select class="ion-select1"  [(ngModel)]="dataSelect.kecamatan" name="kecamatan">
+              <!-- [(ngModel)]="dataUrusan" -->
+              <ion-option *ngFor="let kecamatan of dataKec"  value="{{ kecamatan.kd_kec }}">{{ kecamatan.nama }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item *ngIf="itemInput.nama5">
+            <ion-label floating> {{ itemInput.nama5 }} : </ion-label>
+            <ion-input type="text" name="field5" [(ngModel)]="datas.field5"></ion-input>
+        </ion-item> 
+
+        <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+            KODE & NAMA BARANG
+        </ion-list-header>
+
+        <ion-item>
+            <ion-label floating> Kode Barang : </ion-label>
+            <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+        </ion-item> 
+        
+        <ion-item *ngIf="itemInput.nama1">
+            <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+            <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+        </ion-item>
+        
+        <ion-item *ngIf="itemInput.nama4">
+            <ion-label floating> {{ itemInput.nama4 }} : </ion-label>
+            <ion-input type="text" name="field4" [(ngModel)]="datas.field4"></ion-input>
+       </ion-item> 
+
+       <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+          Harga Perolehan:
+        </ion-label>
+
+       <ion-grid>
+          <ion-row>
+           <ion-col ion-item col-4 class="input-wrappers">
+                  <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+              </ion-input></ion-col>
+              <ion-col  col-4 class="input-wrappers">
+                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+              </ion-col>
+              <ion-col ion-item col-4 class="input-wrappers">
+                <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+
+      <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+         Luas Tanah:
+     </ion-label>
+
+      <ion-grid>
+          <ion-row>
+            <ion-col ion-item col-4 class="input-wrappers">
+                  <ion-input type="text" name="luasDari" [(ngModel)]="datas.luasDari">                        
+              </ion-input></ion-col>
+              <ion-col  col-4 class="input-wrappers">
+                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+              </ion-col>
+              <ion-col ion-item col-4 class="input-wrappers">
+                <ion-input type="text" name="luasSampai" [(ngModel)]="datas.luasSampai"></ion-input>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+              <ion-item style="padding:  0; ">
+                <ion-label floating>Cara Perolehan</ion-label>
+                <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                  <ion-option value="" selected="true"></ion-option>
+                  <ion-option value="1">Pembelian</ion-option>
+                  <ion-option value="2">Hadiah / Hibah</ion-option>
+                  <ion-option value="3">Lainya</ion-option>
+                  <ion-option value="4">Mutasi</ion-option>
+                  <ion-option value="5">Reklas</ion-option>
+                  <ion-option value="6">Kapitalisasi</ion-option>
+                </ion-select>
+              </ion-item>
+
+                <ion-item style="padding:  0; ">
+                  <ion-label floating>Status Aset</ion-label>
+                  <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                    <ion-option value="" selected="true"></ion-option>
+                    <ion-option value="1">Intrakomptabel</ion-option>
+                    <ion-option value="2">Aset Lancar</ion-option>
+                    <ion-option value="3">Aset Tetap</ion-option>
+                    <ion-option value="4">Aset Lainnya</ion-option>
+                    <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                    <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                    <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                    <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                    <ion-option value="9">Aset Lain-lain</ion-option>
+                    <ion-option value="10">Ekstrakomptabel</ion-option>
+                    <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                    <ion-option value="12">Pemindahtangan hibah</ion-option>
+                    <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                    <ion-option value="14">Pemusnahan</ion-option>
+                  </ion-select>
+                </ion-item>
+
+
+                <ion-item style="padding:  0; ">
+                    <ion-label floating>Sumber Dana</ion-label>
+                    <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                        <ion-option value="" selected="true"> </ion-option>
+                        <ion-option value="APBD">APBD</ion-option>
+                        <ion-option value="BANPROV">BANPROV</ion-option>
+                        <ion-option value="Block Grand">Block Grand</ion-option>
+                        <ion-option value="BOS APBD">BOS APBD</ion-option>
+                        <ion-option value="BOS APBN">BOS APBN</ion-option>
+                        <ion-option value="DAK">DAK</ion-option>
+                        <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                        <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                        <ion-option value="JKN">JKN</ion-option>
+                        <ion-option value="Komite">Komite</ion-option>
+                        <ion-option value="Wakaf">Wakaf</ion-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item style="padding:  0; ">
+                      <ion-label floating>Kondisi Barang</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                          <ion-option value="" selected="true"> </ion-option>
+                          <ion-option value="1">Baik</ion-option>
+                          <ion-option value="2">Kurang Baik</ion-option>
+                          <ion-option value="3">Rusak Berat</ion-option>
+                      </ion-select>
+                    </ion-item>
+
+                
+             
+
+
+              <!-- <ion-item *ngIf="itemInput.nama2">
+                  <ion-grid>
+                      <ion-row>
+                        <ion-col col-4>
+                          <ion-label floating> Luas Tanah (m2) : </ion-label>
+                          <ion-input type="text" name="field2" [(ngModel)]="datas.field2"></ion-input>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col col-4>s/d</ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col col-4>
+                            <ion-input type="text" name="field10" [(ngModel)]="datas.field10"></ion-input>
+                        </ion-col>
+                      </ion-row>
+                 </ion-grid>
+                  
+              </ion-item>  -->
+
+
+
+                
+
+
+
+
+
+
+              <ion-item *ngIf="itemInput.nama6">
+                  <ion-label floating> {{ itemInput.nama6 }} : </ion-label>
+                  <ion-input type="text" name="field6" [(ngModel)]="datas.field6"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama7">
+                  <ion-label floating> {{ itemInput.nama7 }} : </ion-label>
+                  <ion-input type="text" name="field7" [(ngModel)]="datas.field7"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama8">
+                  <ion-label floating> {{ itemInput.nama8 }} : </ion-label>
+                  <ion-input type="text" name="field8" [(ngModel)]="datas.field8"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama9">
+                  <ion-label floating> {{ itemInput.nama9 }} : </ion-label>
+                  <ion-input type="text" name="field9" [(ngModel)]="datas.field9"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama10">
+                  <ion-label floating> {{ itemInput.nama10 }} : </ion-label>
+                  <ion-input type="text" name="field10" [(ngModel)]="datas.field10"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama11">
+                  <ion-label floating> {{ itemInput.nama11 }} : </ion-label>
+                  <ion-input type="text" name="field11" [(ngModel)]="datas.field11"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama12">
+                  <ion-label floating> {{ itemInput.nama12 }} : </ion-label>
+                  <ion-input type="text" name="field12" [(ngModel)]="datas.field12"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama13">
+                  <ion-label floating> {{ itemInput.nama13 }} : </ion-label>
+                  <ion-input type="text" name="field13" [(ngModel)]="datas.field13"></ion-input>
+              </ion-item> 
+          </div>
+
+          <!-- END KIB A-->
+
+          <!-- KIB B -->
+
+          
+          <div *ngIf="data[0].namaTable == 'view_kib_b'">
+
+              <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                  KODE & NAMA BARANG
+              </ion-list-header>
+      
+              <ion-item>
+                  <ion-label floating> Kode Barang : </ion-label>
+                  <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+              </ion-item> 
+    
+              <ion-item *ngIf="itemInput.nama1">
+                  <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                  <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                </ion-item> 
+    
+                <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                    Harga Perolehan:
+                  </ion-label>
+          
+                 <ion-grid>
+                    <ion-row>
+                     <ion-col ion-item col-4 class="input-wrappers">
+                            <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                        </ion-input></ion-col>
+                        <ion-col  col-4 class="input-wrappers">
+                          <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                        </ion-col>
+                        <ion-col ion-item col-4 class="input-wrappers">
+                          <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                  
+                <ion-item *ngIf="itemInput.nama3">
+                      <ion-label floating> {{ itemInput.nama3 }} : </ion-label>
+                      <ion-input type="text" name="field3" [(ngModel)]="datas.field3"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nama4">
+                      <ion-label floating> {{ itemInput.nama4 }} : </ion-label>
+                      <ion-input type="text" name="field4" [(ngModel)]="datas.field4"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nam5">
+                    <ion-label floating> {{ itemInput.nama5 }} : </ion-label>
+                    <ion-input type="text" name="field5" [(ngModel)]="datas.field5"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nama6">
+                    <ion-label floating> {{ itemInput.nama6 }} : </ion-label>
+                    <ion-input type="text" name="field6" [(ngModel)]="datas.field6"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nama7">
+                    <ion-label floating> {{ itemInput.nama7 }} : </ion-label>
+                    <ion-input type="text" name="field7" [(ngModel)]="datas.field7"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nama8">
+                    <ion-label floating> {{ itemInput.nama8 }} : </ion-label>
+                    <ion-input type="text" name="field8" [(ngModel)]="datas.field8"></ion-input>
+                </ion-item> 
+    
+                <ion-item *ngIf="itemInput.nama9">
+                    <ion-label floating> {{ itemInput.nama9 }} : </ion-label>
+                    <ion-input type="text" name="field9" [(ngModel)]="datas.field9"></ion-input>
+                </ion-item> 
+
+              <ion-item style="padding:  0; ">
+                <ion-label floating>Cara Perolehan</ion-label>
+                <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                  <ion-option value="" selected="true"></ion-option>
+                  <ion-option value="1">Pembelian</ion-option>
+                  <ion-option value="2">Hadiah / Hibah</ion-option>
+                  <ion-option value="3">Lainya</ion-option>
+                  <ion-option value="4">Mutasi</ion-option>
+                  <ion-option value="5">Reklas</ion-option>
+                  <ion-option value="6">Kapitalisasi</ion-option>
+                </ion-select>
+              </ion-item>
+
+                <ion-item style="padding:  0; ">
+                  <ion-label floating>Status Aset</ion-label>
+                  <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                    <ion-option value="" selected="true"></ion-option>
+                    <ion-option value="1">Intrakomptabel</ion-option>
+                    <ion-option value="2">Aset Lancar</ion-option>
+                    <ion-option value="3">Aset Tetap</ion-option>
+                    <ion-option value="4">Aset Lainnya</ion-option>
+                    <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                    <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                    <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                    <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                    <ion-option value="9">Aset Lain-lain</ion-option>
+                    <ion-option value="10">Ekstrakomptabel</ion-option>
+                    <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                    <ion-option value="12">Pemindahtangan hibah</ion-option>
+                    <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                    <ion-option value="14">Pemusnahan</ion-option>
+                  </ion-select>
+                </ion-item>
+
+
+                <ion-item style="padding:  0; ">
+                    <ion-label floating>Sumber Dana</ion-label>
+                    <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                        <ion-option value="" selected="true"> </ion-option>
+                        <ion-option value="APBD">APBD</ion-option>
+                        <ion-option value="BANPROV">BANPROV</ion-option>
+                        <ion-option value="Block Grand">Block Grand</ion-option>
+                        <ion-option value="BOS APBD">BOS APBD</ion-option>
+                        <ion-option value="BOS APBN">BOS APBN</ion-option>
+                        <ion-option value="DAK">DAK</ion-option>
+                        <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                        <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                        <ion-option value="JKN">JKN</ion-option>
+                        <ion-option value="Komite">Komite</ion-option>
+                        <ion-option value="Wakaf">Wakaf</ion-option>
+                    </ion-select>
+                  </ion-item>
+
+                  <ion-item style="padding:  0; ">
+                      <ion-label floating>Kondisi Barang</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                          <ion-option value="" selected="true"> </ion-option>
+                          <ion-option value="1">Baik</ion-option>
+                          <ion-option value="2">Kurang Baik</ion-option>
+                          <ion-option value="3">Rusak Berat</ion-option>
+                      </ion-select>
+                    </ion-item>
+
+                
+             
+
+
+
+
+              <ion-item *ngIf="itemInput.nama10">
+                  <ion-label floating> {{ itemInput.nama10 }} : </ion-label>
+                  <ion-input type="text" name="field10" [(ngModel)]="datas.field10"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama11">
+                  <ion-label floating> {{ itemInput.nama11 }} : </ion-label>
+                  <ion-input type="text" name="field11" [(ngModel)]="datas.field11"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama12">
+                  <ion-label floating> {{ itemInput.nama12 }} : </ion-label>
+                  <ion-input type="text" name="field12" [(ngModel)]="datas.field12"></ion-input>
+              </ion-item> 
+
+              <ion-item *ngIf="itemInput.nama13">
+                  <ion-label floating> {{ itemInput.nama13 }} : </ion-label>
+                  <ion-input type="text" name="field13" [(ngModel)]="datas.field13"></ion-input>
+              </ion-item> 
+          </div>
+      
+          <!--END KIB B-->
+
+
+
+
+          <!-- KIB C -->
+            <div *ngIf="data[0].namaTable == 'view_kib_c'">
+
+                      <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                        LOKASI
+                      </ion-list-header>
+
+ 
+                        <ion-item *ngIf="itemInput.nama2">
+                            <ion-label floating> {{ itemInput.nama2 }} : </ion-label>
+                            <ion-input type="text" name="field2" [(ngModel)]="datas.field2"></ion-input>
+                        </ion-item> 
+
+                      <ion-item  style="padding:  0;">
+                        <ion-label floating>Kabupaten / Kota : </ion-label>
+                        <ion-select class="ion-select2" (ionChange)="changeKec()"  [(ngModel)]="dataSelect.kota" name="kota">
+                            <!-- [(ngModel)]="dataUrusan" -->
+                          <ion-option *ngFor="let kota of dataKota"  value="{{ kota.kd_kota }}">{{ kota.nama }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+            
+                    <ion-item style="padding:  0;">
+                      <ion-label  >Kecamatan : </ion-label>
+                      <ion-select class="ion-select1"  [(ngModel)]="dataSelect.kecamatan" name="kecamatan">
+                          <!-- [(ngModel)]="dataUrusan" -->
+                          <ion-option *ngFor="let kecamatan of dataKec"  value="{{ kecamatan.kd_kec }}">{{ kecamatan.nama }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item *ngIf="itemInput.nama5">
+                        <ion-label floating> {{ itemInput.nama5 }} : </ion-label>
+                        <ion-input type="text" name="field5" [(ngModel)]="datas.field5"></ion-input>
+                      </ion-item> 
+                      
+                    <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                        Nama & Kode Barang
+                    </ion-list-header>
+                    
+                    <ion-item>
+                        <ion-label floating> Kode Barang : </ion-label>
+                        <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+                    </ion-item> 
+          
+                    <ion-item *ngIf="itemInput.nama1">
+                        <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                        <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                      </ion-item> 
+          
+                      <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                          Harga Perolehan :
+                        </ion-label>
+                
+                       <ion-grid>
+                          <ion-row>
+                           <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                              </ion-input></ion-col>
+                              <ion-col  col-4 class="input-wrappers">
+                                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                              </ion-col>
+                              <ion-col ion-item col-4 class="input-wrappers">
+                                <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+
+                      <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                          Luas Tanah :
+                      </ion-label>
+
+                      <ion-grid>
+                          <ion-row>
+                            <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="luasDari" [(ngModel)]="datas.luasDari">                        
+                              </ion-input></ion-col>
+                              <ion-col  col-4 class="input-wrappers">
+                                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                              </ion-col>
+                              <ion-col ion-item col-4 class="input-wrappers">
+                                <ion-input type="text" name="luasSampai" [(ngModel)]="datas.luasSampai"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                        </ion-grid>
+
+                        <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                            Luas Lantai :
+                        </ion-label>
+
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="luaLantaiDari" [(ngModel)]="datas.luasLantaiDari">                        
+                              </ion-input></ion-col>
+                              <ion-col  col-4 class="input-wrappers">
+                                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                              </ion-col>
+                              <ion-col ion-item col-4 class="input-wrappers">
+                                <ion-input type="text" name="luasLantaiSampai" [(ngModel)]="datas.luasLantaiSampai"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                        </ion-grid>
+
+                      <ion-item style="padding:  0; ">
+                        <ion-label floating>Cara Perolehan</ion-label>
+                        <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                          <ion-option value="" selected="true"></ion-option>
+                          <ion-option value="1">Pembelian</ion-option>
+                          <ion-option value="2">Hadiah / Hibah</ion-option>
+                          <ion-option value="3">Lainya</ion-option>
+                          <ion-option value="4">Mutasi</ion-option>
+                          <ion-option value="5">Reklas</ion-option>
+                          <ion-option value="6">Kapitalisasi</ion-option>
+                        </ion-select>
+                      </ion-item>
+        
+                        <ion-item style="padding:  0; ">
+                          <ion-label floating>Status Aset</ion-label>
+                          <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                            <ion-option value="" selected="true"></ion-option>
+                            <ion-option value="1">Intrakomptabel</ion-option>
+                            <ion-option value="2">Aset Lancar</ion-option>
+                            <ion-option value="3">Aset Tetap</ion-option>
+                            <ion-option value="4">Aset Lainnya</ion-option>
+                            <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                            <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                            <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                            <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                            <ion-option value="9">Aset Lain-lain</ion-option>
+                            <ion-option value="10">Ekstrakomptabel</ion-option>
+                            <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                            <ion-option value="12">Pemindahtangan hibah</ion-option>
+                            <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                            <ion-option value="14">Pemusnahan</ion-option>
+                          </ion-select>
+                        </ion-item>
+        
+        
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Sumber Dana</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="APBD">APBD</ion-option>
+                                <ion-option value="BANPROV">BANPROV</ion-option>
+                                <ion-option value="Block Grand">Block Grand</ion-option>
+                                <ion-option value="BOS APBD">BOS APBD</ion-option>
+                                <ion-option value="BOS APBN">BOS APBN</ion-option>
+                                <ion-option value="DAK">DAK</ion-option>
+                                <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                                <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                                <ion-option value="JKN">JKN</ion-option>
+                                <ion-option value="Komite">Komite</ion-option>
+                                <ion-option value="Wakaf">Wakaf</ion-option>
+                            </ion-select>
+                          </ion-item>
+        
+                          <ion-item style="padding:  0; ">
+                              <ion-label floating>Kondisi Barang</ion-label>
+                              <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                                  <ion-option value="" selected="true"> </ion-option>
+                                  <ion-option value="1">Baik</ion-option>
+                                  <ion-option value="2">Kurang Baik</ion-option>
+                                  <ion-option value="3">Rusak Berat</ion-option>
+                              </ion-select>
+                          </ion-item>
+
+                          <ion-item style="padding:  0; ">
+                            <ion-label floating>Bertingkat / Tidak</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.bertingkat" name="bertingkat" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Bertingkat</ion-option>
+                                <ion-option value="2">Tidak</ion-option>
+                            </ion-select>
+                          </ion-item>
+
+                          <ion-item style="padding:  0; ">
+                            <ion-label floating>Beton / Tidak</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.beton" name="beton" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Beton</ion-option>
+                                <ion-option value="2">Tidak</ion-option>
+                            </ion-select>
+                          </ion-item>
+
+                  </div>
+              
+                  <!--END KIB C-->
+
+
+                  <!-- KIB D -->
+            <div *ngIf="data[0].namaTable == 'view_kib_d'">
+
+                  <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                      LOKASI
+                    </ion-list-header>
+
+                    <ion-item *ngIf="itemInput.nama2">
+                        <ion-label floating> {{ itemInput.nama2 }} : </ion-label>
+                        <ion-input type="text" name="field2" [(ngModel)]="datas.field2"></ion-input>
+                      </ion-item> 
+
+                    <ion-item  style="padding:  0;">
+                      <ion-label floating>Kabupaten / Kota : </ion-label>
+                      <ion-select class="ion-select2" (ionChange)="changeKec()"  [(ngModel)]="dataSelect.kota" name="kota">
+                          <!-- [(ngModel)]="dataUrusan" -->
+                        <ion-option *ngFor="let kota of dataKota"  value="{{ kota.kd_kota }}">{{ kota.nama }}</ion-option>
+                      </ion-select>
+                  </ion-item>
+          
+                  <ion-item style="padding:  0;">
+                    <ion-label  >Kecamatan : </ion-label>
+                    <ion-select class="ion-select1"  [(ngModel)]="dataSelect.kecamatan" name="kecamatan">
+                        <!-- [(ngModel)]="dataUrusan" -->
+                        <ion-option *ngFor="let kecamatan of dataKec"  value="{{ kecamatan.kd_kec }}">{{ kecamatan.nama }}</ion-option>
+                      </ion-select>
+                  </ion-item>
+                    
+                  <ion-item *ngIf="itemInput.nama5">
+                        <ion-label floating> {{ itemInput.nama5 }} : </ion-label>
+                        <ion-input type="text" name="field5" [(ngModel)]="datas.field5"></ion-input>
+                  </ion-item> 
+
+                  <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                    Nama & Kode Barang
+                  </ion-list-header>
+
+                  <ion-item>
+                      <ion-label floating> Kode Barang : </ion-label>
+                      <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+                  </ion-item> 
+        
+                  <ion-item *ngIf="itemInput.nama1">
+                      <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                      <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                    </ion-item> 
+        
+                    <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                        Harga Perolehan :
+                      </ion-label>
+              
+                     <ion-grid>
+                        <ion-row>
+                         <ion-col ion-item col-4 class="input-wrappers">
+                                <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                            </ion-input></ion-col>
+                            <ion-col  col-4 class="input-wrappers">
+                              <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                            </ion-col>
+                            <ion-col ion-item col-4 class="input-wrappers">
+                              <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                    <ion-item *ngIf="itemInput.nama4">
+                        <ion-label floating> {{ itemInput.nama4 }} : </ion-label>
+                        <ion-input type="text" name="field4" [(ngModel)]="datas.field4"></ion-input>
+                      </ion-item> 
+
+                    <ion-item style="padding:  0; ">
+                      <ion-label floating>Cara Perolehan</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                        <ion-option value="" selected="true"></ion-option>
+                        <ion-option value="1">Pembelian</ion-option>
+                        <ion-option value="2">Hadiah / Hibah</ion-option>
+                        <ion-option value="3">Lainya</ion-option>
+                        <ion-option value="4">Mutasi</ion-option>
+                        <ion-option value="5">Reklas</ion-option>
+                        <ion-option value="6">Kapitalisasi</ion-option>
+                      </ion-select>
+                    </ion-item>
+      
+                      <ion-item style="padding:  0; ">
+                        <ion-label floating>Status Aset</ion-label>
+                        <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                          <ion-option value="" selected="true"></ion-option>
+                          <ion-option value="1">Intrakomptabel</ion-option>
+                          <ion-option value="2">Aset Lancar</ion-option>
+                          <ion-option value="3">Aset Tetap</ion-option>
+                          <ion-option value="4">Aset Lainnya</ion-option>
+                          <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                          <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                          <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                          <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                          <ion-option value="9">Aset Lain-lain</ion-option>
+                          <ion-option value="10">Ekstrakomptabel</ion-option>
+                          <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                          <ion-option value="12">Pemindahtangan hibah</ion-option>
+                          <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                          <ion-option value="14">Pemusnahan</ion-option>
+                        </ion-select>
+                      </ion-item>
+      
+      
+                      <ion-item style="padding:  0; ">
+                          <ion-label floating>Sumber Dana</ion-label>
+                          <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                              <ion-option value="" selected="true"> </ion-option>
+                              <ion-option value="APBD">APBD</ion-option>
+                              <ion-option value="BANPROV">BANPROV</ion-option>
+                              <ion-option value="Block Grand">Block Grand</ion-option>
+                              <ion-option value="BOS APBD">BOS APBD</ion-option>
+                              <ion-option value="BOS APBN">BOS APBN</ion-option>
+                              <ion-option value="DAK">DAK</ion-option>
+                              <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                              <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                              <ion-option value="JKN">JKN</ion-option>
+                              <ion-option value="Komite">Komite</ion-option>
+                              <ion-option value="Wakaf">Wakaf</ion-option>
+                          </ion-select>
+                        </ion-item>
+      
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Kondisi Barang</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Baik</ion-option>
+                                <ion-option value="2">Kurang Baik</ion-option>
+                                <ion-option value="3">Rusak Berat</ion-option>
+                            </ion-select>
+                        </ion-item>
+      
+                    
+                    
+
+
+
+
+                </div>
+            
+                <!--END KIB D-->
+
+
+
+                <!-- KIB E -->
+                <div *ngIf="data[0].namaTable == 'view_kib_e'">
+
+                    <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                        Nama & Kode Barang
+                      </ion-list-header>
+    
+                      <ion-item>
+                          <ion-label floating> Kode Barang : </ion-label>
+                          <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+                      </ion-item> 
+            
+                      <ion-item *ngIf="itemInput.nama1">
+                          <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                          <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                        </ion-item> 
+            
+                        <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                            Harga Perolehan :
+                          </ion-label>
+                  
+                         <ion-grid>
+                            <ion-row>
+                             <ion-col ion-item col-4 class="input-wrappers">
+                                    <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                                </ion-input></ion-col>
+                                <ion-col  col-4 class="input-wrappers">
+                                  <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                                </ion-col>
+                                <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+
+                        <ion-item *ngIf="itemInput.nama2">
+                            <ion-label floating> {{ itemInput.nama2 }} : </ion-label>
+                            <ion-input type="text" name="field2" [(ngModel)]="datas.field2"></ion-input>
+                      </ion-item> 
+                        
+                        <ion-item *ngIf="itemInput.nama3">
+                            <ion-label floating> {{ itemInput.nama3 }} : </ion-label>
+                            <ion-input type="text" name="field3" [(ngModel)]="datas.field3"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama4">
+                            <ion-label floating> {{ itemInput.nama4 }} : </ion-label>
+                            <ion-input type="text" name="field4" [(ngModel)]="datas.field4"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nam5">
+                          <ion-label floating> {{ itemInput.nama5 }} : </ion-label>
+                          <ion-input type="text" name="field5" [(ngModel)]="datas.field5"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama6">
+                          <ion-label floating> {{ itemInput.nama6 }} : </ion-label>
+                          <ion-input type="text" name="field6" [(ngModel)]="datas.field6"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama7">
+                          <ion-label floating> {{ itemInput.nama7 }} : </ion-label>
+                          <ion-input type="text" name="field7" [(ngModel)]="datas.field7"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama8">
+                          <ion-label floating> {{ itemInput.nama8 }} : </ion-label>
+                          <ion-input type="text" name="field8" [(ngModel)]="datas.field8"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama9">
+                          <ion-label floating> {{ itemInput.nama9 }} : </ion-label>
+                          <ion-input type="text" name="field9" [(ngModel)]="datas.field9"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama10">
+                          <ion-label floating> {{ itemInput.nama10 }} : </ion-label>
+                          <ion-input type="text" name="field10" [(ngModel)]="datas.field10"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama11">
+                          <ion-label floating> {{ itemInput.nama11 }} : </ion-label>
+                          <ion-input type="text" name="field11" [(ngModel)]="datas.field11"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama12">
+                          <ion-label floating> {{ itemInput.nama12 }} : </ion-label>
+                          <ion-input type="text" name="field12" [(ngModel)]="datas.field12"></ion-input>
+                      </ion-item> 
+        
+                      <ion-item *ngIf="itemInput.nama13">
+                          <ion-label floating> {{ itemInput.nama13 }} : </ion-label>
+                          <ion-input type="text" name="field13" [(ngModel)]="datas.field13"></ion-input>
+                      </ion-item> 
+
+                    <ion-item style="padding:  0; ">
+                      <ion-label floating>Cara Perolehan</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                        <ion-option value="" selected="true"></ion-option>
+                        <ion-option value="1">Pembelian</ion-option>
+                        <ion-option value="2">Hadiah / Hibah</ion-option>
+                        <ion-option value="3">Lainya</ion-option>
+                        <ion-option value="4">Mutasi</ion-option>
+                        <ion-option value="5">Reklas</ion-option>
+                        <ion-option value="6">Kapitalisasi</ion-option>
+                      </ion-select>
+                    </ion-item>
+      
+                      <ion-item style="padding:  0; ">
+                        <ion-label floating>Status Aset</ion-label>
+                        <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                          <ion-option value="" selected="true"></ion-option>
+                          <ion-option value="1">Intrakomptabel</ion-option>
+                          <ion-option value="2">Aset Lancar</ion-option>
+                          <ion-option value="3">Aset Tetap</ion-option>
+                          <ion-option value="4">Aset Lainnya</ion-option>
+                          <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                          <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                          <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                          <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                          <ion-option value="9">Aset Lain-lain</ion-option>
+                          <ion-option value="10">Ekstrakomptabel</ion-option>
+                          <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                          <ion-option value="12">Pemindahtangan hibah</ion-option>
+                          <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                          <ion-option value="14">Pemusnahan</ion-option>
+                        </ion-select>
+                      </ion-item>
+      
+      
+                      <ion-item style="padding:  0; ">
+                          <ion-label floating>Sumber Dana</ion-label>
+                          <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                              <ion-option value="" selected="true"> </ion-option>
+                              <ion-option value="APBD">APBD</ion-option>
+                              <ion-option value="BANPROV">BANPROV</ion-option>
+                              <ion-option value="Block Grand">Block Grand</ion-option>
+                              <ion-option value="BOS APBD">BOS APBD</ion-option>
+                              <ion-option value="BOS APBN">BOS APBN</ion-option>
+                              <ion-option value="DAK">DAK</ion-option>
+                              <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                              <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                              <ion-option value="JKN">JKN</ion-option>
+                              <ion-option value="Komite">Komite</ion-option>
+                              <ion-option value="Wakaf">Wakaf</ion-option>
+                          </ion-select>
+                        </ion-item>
+      
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Kondisi Barang</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Baik</ion-option>
+                                <ion-option value="2">Kurang Baik</ion-option>
+                                <ion-option value="3">Rusak Berat</ion-option>
+                            </ion-select>
+                        </ion-item>
+      
+                    
+
+
+                </div>
+            
+                <!--END KIB E-->
+
+
+
+                <!-- KIB F -->
+                <div *ngIf="data[0].namaTable == 'view_kib_f'">
+
+                    <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                        LOKASI
+                      </ion-list-header>
+                      <ion-item *ngIf="itemInput.nama2">
+                          <ion-label floating> {{ itemInput.nama2 }} : </ion-label>
+                          <ion-input type="text" name="field2" [(ngModel)]="datas.field2"></ion-input>
+                     </ion-item> 
+
+                      <ion-item  style="padding:  0;">
+                        <ion-label floating>Kabupaten / Kota : </ion-label>
+                        <ion-select class="ion-select2" (ionChange)="changeKec()"  [(ngModel)]="dataSelect.kota" name="kota">
+                            <!-- [(ngModel)]="dataUrusan" -->
+                          <ion-option *ngFor="let kota of dataKota"  value="{{ kota.kd_kota }}">{{ kota.nama }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+            
+                    <ion-item style="padding:  0;">
+                      <ion-label  >Kecamatan : </ion-label>
+                      <ion-select class="ion-select1"  [(ngModel)]="dataSelect.kecamatan" name="kecamatan">
+                          <!-- [(ngModel)]="dataUrusan" -->
+                          <ion-option *ngFor="let kecamatan of dataKec"  value="{{ kecamatan.kd_kec }}">{{ kecamatan.nama }}</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+
+                    
+
+    
+                  <ion-item *ngIf="itemInput.nama4">
+                        <ion-label floating> {{ itemInput.nama4 }} : </ion-label>
+                        <ion-input type="text" name="field4" [(ngModel)]="datas.field4"></ion-input>
+                  </ion-item> 
+    
+
+                  <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                      Nama & Kode Barang
+                    </ion-list-header>
+  
+                    <ion-item>
+                        <ion-label floating> Kode Barang : </ion-label>
+                        <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+                    </ion-item> 
+          
+                    <ion-item *ngIf="itemInput.nama1">
+                        <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                        <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                      </ion-item> 
+          
+                      <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                          Harga Perolehan :
+                        </ion-label>
+                
+                       <ion-grid>
+                          <ion-row>
+                           <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                              </ion-input></ion-col>
+                              <ion-col  col-4 class="input-wrappers">
+                                <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                              </ion-col>
+                              <ion-col ion-item col-4 class="input-wrappers">
+                                <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                              </ion-col>
+                          </ion-row>
+                      </ion-grid>
+
+                  <ion-item *ngIf="itemInput.nama3">
+                      <ion-label floating> {{ itemInput.nama3 }} : </ion-label>
+                      <ion-input type="text" name="field3" [(ngModel)]="datas.field3"></ion-input>
+                 </ion-item> 
+
+                    <ion-item style="padding:  0; ">
+                      <ion-label floating>Cara Perolehan</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                        <ion-option value="" selected="true"></ion-option>
+                        <ion-option value="1">Pembelian</ion-option>
+                        <ion-option value="2">Hadiah / Hibah</ion-option>
+                        <ion-option value="3">Lainya</ion-option>
+                        <ion-option value="4">Mutasi</ion-option>
+                        <ion-option value="5">Reklas</ion-option>
+                        <ion-option value="6">Kapitalisasi</ion-option>
+                      </ion-select>
+                    </ion-item>
+      
+                      <ion-item style="padding:  0; ">
+                        <ion-label floating>Status Aset</ion-label>
+                        <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                          <ion-option value="" selected="true"></ion-option>
+                          <ion-option value="1">Intrakomptabel</ion-option>
+                          <ion-option value="2">Aset Lancar</ion-option>
+                          <ion-option value="3">Aset Tetap</ion-option>
+                          <ion-option value="4">Aset Lainnya</ion-option>
+                          <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                          <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                          <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                          <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                          <ion-option value="9">Aset Lain-lain</ion-option>
+                          <ion-option value="10">Ekstrakomptabel</ion-option>
+                          <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                          <ion-option value="12">Pemindahtangan hibah</ion-option>
+                          <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                          <ion-option value="14">Pemusnahan</ion-option>
+                        </ion-select>
+                      </ion-item>
+      
+      
+                      <ion-item style="padding:  0; ">
+                          <ion-label floating>Sumber Dana</ion-label>
+                          <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                              <ion-option value="" selected="true"> </ion-option>
+                              <ion-option value="APBD">APBD</ion-option>
+                              <ion-option value="BANPROV">BANPROV</ion-option>
+                              <ion-option value="Block Grand">Block Grand</ion-option>
+                              <ion-option value="BOS APBD">BOS APBD</ion-option>
+                              <ion-option value="BOS APBN">BOS APBN</ion-option>
+                              <ion-option value="DAK">DAK</ion-option>
+                              <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                              <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                              <ion-option value="JKN">JKN</ion-option>
+                              <ion-option value="Komite">Komite</ion-option>
+                              <ion-option value="Wakaf">Wakaf</ion-option>
+                          </ion-select>
+                        </ion-item>
+                        
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Bertingkat / Tidak</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.bertingkat" name="bertingkat" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Bertingkat</ion-option>
+                                <ion-option value="2">Tidak</ion-option>
+                            </ion-select>
+                          </ion-item>
+
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Tipe Bangunan</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.tipeBangunan" name="tipeBangunan" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Permanen</ion-option>
+                                <ion-option value="2">Semi Permanen</ion-option>
+                                <ion-option value="3">Darurat</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Kondisi Barang</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Baik</ion-option>
+                                <ion-option value="2">Kurang Baik</ion-option>
+                                <ion-option value="3">Rusak Berat</ion-option>
+                            </ion-select>
+                        </ion-item>
+      
+                    
+                    
+
+
+
+
+                </div>
+            
+                <!--END KIB F-->
+
+
+                <!-- KIB G -->
+                <div *ngIf="data[0].namaTable == 'view_kib_g'">
+                  
+                    <ion-list-header style="text-align: left;padding:  0;font-size: 17px;background: #f7f7f7;color: #dc9b4a;border-bottom: 1px dashed;margin-top: 20px;height:  0px;border-top: 1px dashed;min-height: 3.5rem;">
+                        Nama & Kode Barang
+                      </ion-list-header>
+    
+                      <ion-item>
+                          <ion-label floating> Kode Barang : </ion-label>
+                          <ion-input type="text" name="kodeBarang" [(ngModel)]="datas.kodeBarang"></ion-input>
+                      </ion-item> 
+            
+                      <ion-item *ngIf="itemInput.nama1">
+                          <ion-label floating> {{ itemInput.nama1 }} : </ion-label>
+                          <ion-input type="text" name="field1" [(ngModel)]="datas.field1"></ion-input>
+                        </ion-item> 
+    
+                        <ion-label stacked style="text-align: left;padding:  0;font-size: 15px;">
+                            Harga Perolehan :
+                          </ion-label>
+                  
+                         <ion-grid>
+                            <ion-row>
+                             <ion-col ion-item col-4 class="input-wrappers">
+                                    <ion-input type="text" name="hargaDari" [(ngModel)]="datas.hargaDari">                        
+                                </ion-input></ion-col>
+                                <ion-col  col-4 class="input-wrappers">
+                                  <h6 style="text-align:center; color:#f19d36;">s/d</h6>
+                                </ion-col>
+                                <ion-col ion-item col-4 class="input-wrappers">
+                                  <ion-input type="text" name="hargaSampai" [(ngModel)]="datas.hargaSampai"></ion-input>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+    
+                            <ion-item *ngIf="itemInput.nama3">
+                                <ion-label floating> {{ itemInput.nama3 }} : </ion-label>
+                                <ion-input type="text" name="field3" [(ngModel)]="datas.field3"></ion-input>
+                          </ion-item> 
+
+                    <ion-item style="padding:  0; ">
+                      <ion-label floating>Cara Perolehan</ion-label>
+                      <ion-select [(ngModel)]="dataSelect.perolehan" name="perolehan">
+                        <ion-option value="" selected="true"></ion-option>
+                        <ion-option value="1">Pembelian</ion-option>
+                        <ion-option value="2">Hadiah / Hibah</ion-option>
+                        <ion-option value="3">Lainya</ion-option>
+                        <ion-option value="4">Mutasi</ion-option>
+                        <ion-option value="5">Reklas</ion-option>
+                        <ion-option value="6">Kapitalisasi</ion-option>
+                      </ion-select>
+                    </ion-item>
+      
+                      <ion-item style="padding:  0; ">
+                        <ion-label floating>Status Aset</ion-label>
+                        <ion-select [(ngModel)]="dataSelect.staset" name="staset" style="font-size: 15px;">
+                          <ion-option value="" selected="true"></ion-option>
+                          <ion-option value="1">Intrakomptabel</ion-option>
+                          <ion-option value="2">Aset Lancar</ion-option>
+                          <ion-option value="3">Aset Tetap</ion-option>
+                          <ion-option value="4">Aset Lainnya</ion-option>
+                          <ion-option value="5">Tagihan Penjualan Angsuran</ion-option>
+                          <ion-option value="6">Tuntutan Ganti Rugi</ion-option>
+                          <ion-option value="7">Kemitraan dengan Pihak Ke Tiga</ion-option>
+                          <ion-option value="8">Aset Tidak Berwujud</ion-option>
+                          <ion-option value="9">Aset Lain-lain</ion-option>
+                          <ion-option value="10">Ekstrakomptabel</ion-option>
+                          <ion-option value="11">Pemindahtangan tukar menukar</ion-option>
+                          <ion-option value="12">Pemindahtangan hibah</ion-option>
+                          <ion-option value="13">Pemindahtangan penyertaan modal</ion-option>
+                          <ion-option value="14">Pemusnahan</ion-option>
+                        </ion-select>
+                      </ion-item>
+      
+      
+                      <ion-item style="padding:  0; ">
+                          <ion-label floating>Sumber Dana</ion-label>
+                          <ion-select [(ngModel)]="dataSelect.sumberDana" name="sumberDana">
+                              <ion-option value="" selected="true"> </ion-option>
+                              <ion-option value="APBD">APBD</ion-option>
+                              <ion-option value="BANPROV">BANPROV</ion-option>
+                              <ion-option value="Block Grand">Block Grand</ion-option>
+                              <ion-option value="BOS APBD">BOS APBD</ion-option>
+                              <ion-option value="BOS APBN">BOS APBN</ion-option>
+                              <ion-option value="DAK">DAK</ion-option>
+                              <ion-option value="Hibah Provinsi">Hibah Provinsi</ion-option>
+                              <ion-option value="Hibah Pusat">Hibah Pusat</ion-option>
+                              <ion-option value="JKN">JKN</ion-option>
+                              <ion-option value="Komite">Komite</ion-option>
+                              <ion-option value="Wakaf">Wakaf</ion-option>
+                          </ion-select>
+                        </ion-item>
+      
+                        <ion-item style="padding:  0; ">
+                            <ion-label floating>Kondisi Barang</ion-label>
+                            <ion-select [(ngModel)]="dataSelect.kondisiBarang" name="kondisiBarang" style="font-size: 15px;">
+                                <ion-option value="" selected="true"> </ion-option>
+                                <ion-option value="1">Baik</ion-option>
+                                <ion-option value="2">Kurang Baik</ion-option>
+                                <ion-option value="3">Rusak Berat</ion-option>
+                            </ion-select>
+                        </ion-item>
+      
+                    
+                    
+
+                        
+
+
+                </div>
+            
+                <!--END KIB G-->
+
+
+                
+          </div>
+      </div>
+
+
+
+       
+      </ion-list>
+  </div>
+</div>
+
+
+</div>
+
+<ion-fab bottom (click)="submit(data[0].namaTable)" style="width: 100%; bottom: 0; text-align:  center; background: #f19d36;">
+  <ion-row>
+          <ion-col style="padding:  3%;font-size: 13px;color: #fff;">
+                CARI DATA
+         </ion-col>
+  </ion-row>
+</ion-fab>
+</ion-content>

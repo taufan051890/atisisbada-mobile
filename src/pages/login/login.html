@@ -1,0 +1,44 @@
+
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="assets/imgs/log.png"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form >
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+        <ion-label style="color: white;">Mobile Version 1.1.1</ion-label>
+            <ion-item>
+              <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="data.username"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-input  type="{{type}}" placeholder="Password" name="password" [(ngModel)]="data.password" pattern=".{4,10}"></ion-input>
+                <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">   <ion-icon ios="ios-eye-off" md="md-eye-off"></ion-icon></button>
+                <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">  <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+                </button>
+                
+            </ion-item>
+
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="submit-btn" full type="submit" (click)="submit()">Login</button>
+        </ion-col>
+      </ion-row>
+      
+
+
+
+    </form>
+  </div>
+</ion-content>

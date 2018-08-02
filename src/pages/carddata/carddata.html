@@ -1,0 +1,238 @@
+<!--
+  Generated template for the CardlayoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+
+  <ion-navbar hideBackButton>
+
+        <button ion-button icon-only menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+          
+    
+      <ion-title *ngFor="let itemNama of data;  let i=index" style="text-align: center">
+        <div *ngIf="i < 1">
+            {{ itemNama.namaPage }}
+        </div>
+      </ion-title>
+
+   
+
+
+    
+      <!-- <ion-buttons end>
+
+        <button ion-button icon-only (click)="search()" style="color: white;">
+            <ion-icon ios="ios-search" md="md-search"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="refresh()" style="color: white;">
+           <ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="home()" style="color: white;">
+          <ion-icon name="md-arrow-round-back"></ion-icon>
+        </button>
+      </ion-buttons> -->
+
+      <ion-buttons end>
+            <a ion-button icon-only (click)="openPopover($event)">
+             <ion-icon name="more"></ion-icon>
+           </a>
+      </ion-buttons>
+ 
+    </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content class="cards-bg">
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Tarik Kebawah Untuk Refresh."
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+      </ion-refresher>
+ 
+      
+<ion-card  *ngFor="let item of users" [ngClass]="animateClass">
+
+
+
+  <ion-slides pager *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
+    <div *ngFor="let itemGalery of dataGalery">
+        <ion-slide *ngIf="item.plu == itemGalery.id_menu" class="crop">
+            <img (click)="action(itemGalery.gambar,itemGalery.id_menu)" src="{{ urlService }}atis/pages/api/api/images/Colored/{{ itemGalery.gambar }}" />
+        </ion-slide>
+    </div>
+    <div>
+      <img  src="assets/imgs/Default.png"/>
+  </div>
+    
+
+  </ion-slides>
+
+  <ion-card-content *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
+    <ion-card-title>
+      {{ item.field1 }}
+    </ion-card-title>
+
+    <ion-item text-wrap *ngIf="item.luas">
+        <b><h2>Luas</h2></b>
+        <h3>
+            {{ item.luas }}
+        </h3>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="item.harga">
+        <b><h2>Harga</h2></b>
+        <!-- <h3>{{ item.harga }}</h3> -->
+        <h3>
+            {{ item.harga }}
+        </h3>
+    </ion-item>
+
+   <ion-item text-wrap *ngIf="item.field2 && item.nama2 !='Luas' && item.nama2 !='Harga'">
+        <b><h2>{{ item.nama2 }}</h2></b>
+        <h3>
+            {{ item.field2 }}
+        </h3>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="item.field3 && item.nama3 !='Luas' && item.nama3 !='Harga'">
+        <b><h2>{{ item.nama3 }}</h2></b>
+        <h3>
+            {{ item.field3 }}
+        </h3>
+    </ion-item>
+
+    <!-- <ion-item text-wrap *ngIf="item.field4 && item.nama4 !='Luas' && item.nama4 !='Harga'">
+        <b><h2>{{ item.nama4 }}</h2></b>
+        <h3>
+            {{ item.field4 }}
+        </h3>
+    </ion-item>
+    <ion-item text-wrap *ngIf="item.field5 && item.nama5 !='Luas' && item.nama5 !='Harga'">
+        <b><h2>{{ item.nama5 }}</h2></b>
+        <h3>
+            {{ item.field5 }}
+        </h3>
+    </ion-item>
+     
+    <ion-item text-wrap *ngIf="item.field6 && item.nama6 !='Luas' && item.nama6 !='Harga'">
+        <b><h2>{{ item.nama6 }}</h2></b>
+        <h3>
+            {{ item.field6 }}
+        </h3>
+    </ion-item>
+    
+    <ion-item text-wrap *ngIf="item.field7 && item.nama7 !='Luas' && item.nama7 !='Harga'">
+        <b><h2>{{ item.nama7 }}</h2></b>
+                <h3>
+            {{ item.field7 }}
+                </h3>
+    </ion-item>
+    
+    <ion-item  text-wrap *ngIf="item.field8 && item.nama8 !='Luas' && item.nama8 !='Harga'">
+        <b><h2>{{ item.nama8 }}</h2></b>
+                <h3>
+            {{ item.field8 }}
+                </h3>
+    </ion-item>
+    
+    <ion-item text-wrap *ngIf="item.field9 && item.nama9 !='Luas' && item.nama9 !='Harga'">
+        <b><h2>{{ item.nama9 }}</h2></b>
+                <h3>
+            {{ item.field9 }}
+                </h3>
+    </ion-item>
+
+    <ion-item text-wrap *ngIf="item.field10 && item.nama10 !='Luas' && item.nama10 !='Harga'">
+        <b><h2>{{ item.nama10 }}</h2></b>
+                <h3>
+            {{ item.field10 }}
+                </h3>
+    </ion-item>  -->
+
+
+  </ion-card-content>
+
+  <ion-row no-padding *ngIf="item.namaPage != 'Data Page Tidak Ada!'" 
+  style="
+  text-align: center;
+  border-top: 1px solid #e8e3e3;
+  ">
+    <!-- <ion-col>
+      <button ion-button clear small color="danger" icon-start (click)="page(item.id)">
+        <ion-icon name='search'></ion-icon>
+        View More
+      </button>
+    </ion-col> -->
+
+    <ion-col  style="border-right: 1px solid #e9e9e9;">
+        <button style="color: #fd7694;" ion-button clear small color="danger" icon-start (click)="view(data[0].namaTable,item.plu)">
+            <ion-icon ios="ios-eye" md="md-eye"></ion-icon>
+          View
+        </button>
+      </ion-col>
+
+    <ion-col style="border-right: 1px solid #e9e9e9;">
+        <button style="color: #00c2ff;" ion-button clear small color="danger" icon-start (click)="UploadImage(item.plu)">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          Upload
+        </button>
+      </ion-col>
+
+    <!-- <ion-col>
+        <button style="color: #007aff;" ion-button clear small color="danger" icon-start (click)="takePhoto(item.plu)">
+            <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+          Foto
+        </button>
+      </ion-col> -->
+
+  </ion-row>
+
+
+</ion-card>
+
+<ion-card *ngFor="let itemNama of data;  let i=index">
+    <div *ngIf="i < 1">
+      <ion-infinite-scroll *ngIf='itemNama.jumlah != 0' (ionInfinite)="loadMore(itemNama.jumlah, $event)" loadingSpinner="bubbles" loadingText="Loading...">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</div>
+</ion-card>
+<ion-card>
+</ion-card>
+<ion-card>    
+</ion-card>
+
+        <ion-fab bottom style="width: 100%; bottom: 0; text-align:  center; background: #f19d36;">
+            <ion-row>
+                    <ion-col style="border-right: 1px solid #c5bcbc;"  (click)="sort()">
+                        <button style="color: #fff; font-size: 13px;" ion-button clear small color="danger" icon-start>
+                           <span style="color: #fff; font-size: 13px !important;">
+                            <ion-icon ios="ios-options" md="md-options"></ion-icon>
+                               URUTKAN
+                           </span>
+                        </button>
+                      </ion-col>
+                
+                    <ion-col (click)="search()">
+                        <button style="color: #fff; font-size: 13px;" ion-button clear small color="danger" icon-start>
+                            <span style="color: #fff; font-size: 13px !important;">
+                                <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                                CARI
+                            </span>  
+                        </button>
+                   </ion-col>
+            </ion-row>
+          </ion-fab>
+
+</ion-content>

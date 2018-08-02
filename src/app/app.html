@@ -1,0 +1,64 @@
+<ion-menu [content]="content" persistent="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>MENU</ion-title>
+
+      <ion-buttons end>
+            <button ion-button icon-only (click)="closeMenu()">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+            </button>
+          </ion-buttons>
+    </ion-toolbar>
+
+
+  </ion-header>
+
+  <ion-content>
+    <ion-list style="margin: -1px 0 -2px !important;" >
+          <img src="assets/imgs/kiba.png" (click)="page('kiba')" />
+    </ion-list>
+    <ion-list style="margin: -1px 0 -2px !important;" >
+        <img src="assets/imgs/kibb.png" (click)="page('kibb')"/>
+    </ion-list>
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('kibc')">
+        <img src="assets/imgs/kibc.png"/>
+    </ion-list>
+    
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('kibd')">
+        <img src="assets/imgs/kibd.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('kibe')">
+        <img src="assets/imgs/kibe.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('kibf')">
+        <img src="assets/imgs/kibf.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('kibg')">
+        <img src="assets/imgs/kibg.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('barcode')">
+        <img src="assets/imgs/barcode.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="page('qrcode')">
+        <img src="assets/imgs/qrcode.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="Sensus()">
+        <img src="assets/imgs/sensusT.png"/>
+    </ion-list>
+
+    <ion-list style="margin: -1px 0 -2px !important;" (click)="Rekap()">
+        <img src="assets/imgs/rekapT.png"/>
+    </ion-list>
+    
+</ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,135 @@
+<!--
+  Generated template for the CardlayoutPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-title *ngFor="let itemNama of data;  let i=index">
+          <div *ngIf="i < 1">
+              {{ itemNama.namaPage }}
+          </div>
+        </ion-title>
+  
+        <ion-buttons end>
+          <button ion-button icon-only (click)="search()" style="color: white;">
+              <ion-icon ios="ios-search" md="md-search"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="loadUser()" style="color: white;">
+             <ion-icon ios="ios-refresh-circle" md="md-refresh-circle"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="home()" style="color: white;">
+            <ion-icon name="md-arrow-round-back"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+  
+  </ion-header>
+  
+  
+  
+  <ion-content class="cards-bg">
+  
+  <ion-card  *ngFor="let item of data" >
+  
+  
+  
+    <ion-slides pager *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
+      <div *ngFor="let itemGalery of dataGalery">
+          <ion-slide *ngIf="item.plu == itemGalery.id_menu">
+              <img  src="http://123.231.253.228/atis/pages/api/api/images/Colored/{{ itemGalery.gambar }}" />
+          </ion-slide>
+       
+      </div>
+      <div *ngIf="dataGalery">
+  
+        <img *ngIf="item.plu != dataGalery.id_menu" src="http://123.231.253.228/atis/pages/api/api/images/Colored/Default.png"/>
+    </div>
+      
+  
+    </ion-slides>
+  
+    <ion-card-content *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
+      <ion-card-title>
+        {{ item.nama }}
+      </ion-card-title>
+  
+      <ion-item *ngIf="item.nama1">
+        {{ item.nama1 }}
+        <ion-note item-end>
+          {{ item.field1 }}
+        </ion-note>
+      </ion-item>
+  
+      <ion-item *ngIf="item.nama2">
+        {{ item.nama2 }}
+        <ion-note item-end>
+          {{ item.field2 }}
+        </ion-note>
+      </ion-item>
+      
+      <ion-item *ngIf="item.nama3">
+        {{ item.nama3 }}
+        <ion-note item-end>
+          {{ item.field3 }}
+        </ion-note>
+      </ion-item>
+  
+      <ion-item *ngIf="item.nama4">
+        {{ item.nama4 }}
+        <ion-note item-end>
+          {{ item.field4 }}
+        </ion-note>
+      </ion-item>
+  
+      <ion-item *ngIf="item.nama5">
+        {{ item.nama5 }}
+        <ion-note item-end>
+          {{ item.field5 }}
+        </ion-note>
+      </ion-item>
+  
+    </ion-card-content>
+  
+    <ion-row no-padding *ngIf="item.namaPage != 'Data Page Tidak Ada!'" 
+    style="
+    text-align: center;
+    border-top: 1px solid #e8e3e3;
+    ">
+      <!-- <ion-col>
+        <button ion-button clear small color="danger" icon-start (click)="page(item.id)">
+          <ion-icon name='search'></ion-icon>
+          View More
+        </button>
+      </ion-col> -->
+  
+      <ion-col 
+      style="
+      border-right: 1px solid #e9e9e9;
+      ">
+          <button style="color: #00c2ff;" ion-button clear small color="danger" icon-start (click)="takePhotoGalery(item.plu)">
+              <ion-icon ios="ios-images" md="md-images"></ion-icon>
+            Upload
+          </button>
+        </ion-col>
+  
+      <ion-col>
+          <button style="color: #007aff;" ion-button clear small color="danger" icon-start (click)="takePhoto(item.plu)">
+              <ion-icon ios="ios-camera" md="md-camera"></ion-icon>
+            Foto
+          </button>
+        </ion-col>
+  
+    </ion-row>
+  
+  
+  </ion-card>
+  
+  
+  
+  
+  </ion-content>
+  

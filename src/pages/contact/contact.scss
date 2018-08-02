@@ -1,0 +1,66 @@
+page-contact {
+
+
+    .contact-content {
+
+        .thumbnail {
+            position: relative;
+            border-radius: 50%;
+            width: 125px;
+            height: 125px;
+            overflow: hidden;
+          }
+          .thumbnail img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            height: auto;
+            width: auto;
+            -webkit-transform: translate(-50%,-50%);
+                -ms-transform: translate(-50%,-50%);
+                    transform: translate(-50%,-50%);
+          }
+
+        ion-card img {
+            display: block;
+            width: 100%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            max-width: 100%;
+        }
+
+        .card-md {
+            margin: 0px;
+            border-radius: 0px;
+            width: calc(100% - 0px);
+            font-size: 1.4rem;
+            // background: linear-gradient(to left, #56b5ca 0%, #00ffff 100%);
+            background: linear-gradient(to left, #56caca 0%, #ff8d00 100%);
+            -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: none;
+            color: white;
+            padding-bottom: 7%;
+        }
+
+        .item-md {
+            padding-left: 12px;
+            padding-right: 0%;
+            position: static;
+            font-size: 1.6rem;
+            font-weight: normal;
+            text-transform: none;
+            color: #fff;
+            background-color: transparent;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: 14%;
+        }
+
+        .item-md ion-icon[item-left] + .item-inner, .item-md ion-icon[item-left] + .item-input, .item-md ion-icon[item-start] + .item-inner, .item-md ion-icon[item-start] + .item-input {
+            margin-left: 4px;
+        }
+    }
+}

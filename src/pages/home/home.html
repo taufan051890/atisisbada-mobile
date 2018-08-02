@@ -1,0 +1,145 @@
+<ion-header  class="navbar-content">
+  <ion-navbar hideBackButton>
+
+
+     <ion-title style=" color: #ffffff !important;" *ngFor="let itemSetting of data;  let i=index">
+      <div *ngIf="i <= 0">
+       <img src="assets/imgs/logos.png" style="width: 45%;"/>
+      </div>
+     </ion-title>
+
+     <!-- <ion-buttons end>
+       <button ion-button icon-only (click)="ionViewDidLoad()" style="color: white;">
+        <ion-icon ios="ios-more" md="md-more"></ion-icon>
+       </button>
+       
+     </ion-buttons> -->
+
+        <ion-buttons end>
+         <a ion-button icon-only (click)="openPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </a>
+        </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="home-content">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Tarik Kebawah Untuk Refresh."
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12 style="padding: 0px">
+
+              <ion-slides [ngClass]="animateClass" *ngIf="dataBanner && dataBanner.length"  autoplay="5000" loop="true" pager>
+
+                  <ion-slide *ngFor="let itemBanner of dataBanner">
+                    <img src="{{ urlService }}atis/pages/api/api/images/Colored/{{ itemBanner.image }}">
+                  </ion-slide>
+                
+                
+                </ion-slides>
+           </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+{{result?.data[0].warna}}
+      <ion-col col-4 width-50 (click)="page(item.id)" *ngFor="let item of data" style="padding: 0px" class="menu class{{item.id}}" [ngClass]="animateClass">
+          <ion-card class="menu" style="background: white;">
+
+           <!-- <form>
+            <ion-item>
+              <ion-input type="text" value="{{ item.id_menu_1}}" name="m1" [(ngModel)]="data.m1"></ion-input>
+              <ion-input type="text" value="{{ item.id_menu_2}}" name="m2" [(ngModel)]="data.m2"></ion-input>
+              <ion-input type="text" value="{{ item.id_menu_3}}" name="m3" [(ngModel)]="data.m3"></ion-input>
+              <ion-input type="text" value="{{ item.id_menu_4}}" name="m4" [(ngModel)]="data.m4"></ion-input>
+              <ion-input type="text" value="{{ item.id_menu_5}}" name="m5" [(ngModel)]="data.m5"></ion-input>
+            </ion-item>
+           </form> -->
+
+                <img src="{{ urlService }}atis/pages/api/api/images/Colored/{{ item.icon }}" style="width: 100%;padding: 30%;margin-top: -18%;"/>
+            <ion-card-content style="height: 53px;min-height: 53px;">
+              <ion-card-title style="color: black; ">
+               {{ item.nama }}
+                </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+
+      <ion-col col-4 width-50 class="menu" (click)="Sensus()" class="menu" style="padding: 0px" [ngClass]="animateClass">
+        <ion-card class="menu" style="background: white;">
+              <img src="assets/imgs/sensus.png" style="width: 100%;padding: 30%;margin-top: -18%;"/>
+          <ion-card-content style="height: 53px;min-height: 53px;">
+            <ion-card-title style="color: black; ">
+             Sensus
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+
+
+    <ion-col col-4 width-50 class="menu" (click)="Rekap()" style="padding: 0px" [ngClass]="animateClass">
+        <ion-card class="menu" style="background: white;">
+              <img src="assets/imgs/rekap.png" style="width: 100%;padding: 30%;margin-top: -18%;"/>
+          <ion-card-content style="height: 53px;min-height: 53px;">
+            <ion-card-title style="color: black; ">
+             Rekap
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+
+
+    <ion-col col-4 width-50 class="menu" (click)="Logout()" style="padding: 0px" [ngClass]="animateClass">
+      <ion-card class="menu" style="background: white;">
+            <img src="assets/imgs/signout.png" style="width: 100%;padding: 30%;margin-top: -18%;"/>
+        <ion-card-content style="height: 53px;min-height: 53px;">
+          <ion-card-title style="color: black; ">
+           Logout
+            </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+  </ion-col>
+
+    
+
+    </ion-row>
+
+  </ion-grid>
+
+  <!-- <ion-fab bottom style="width: 100%;bottom: 0;text-align:  center;background: #ffffff;margin-top: 14px;border-top: 1px solid #afafaf;">
+    <ion-row>
+            <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;">
+                <button  style="color: #1fafdc;" ion-button clear small color="danger" icon-start>
+                        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                 Home
+                </button>
+              </ion-col>
+        
+            <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;" (click)="route('about')">
+                <button style="color: #7b8184;" ion-button clear small color="danger" icon-start>
+                  <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                  About
+                </button>
+           </ion-col>
+
+           <ion-col col-4 (click)="route('profile')" style="padding: 0px;">
+            <button style="color: #7b8184;" ion-button clear small color="danger" icon-start>
+              <ion-icon ios="ios-person" md="md-person"></ion-icon>
+              Profile
+            </button>
+       </ion-col>
+
+    </ion-row>
+  </ion-fab> -->
+  
+</ion-content>
+

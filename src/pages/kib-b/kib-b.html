@@ -1,0 +1,237 @@
+<!--
+  Generated template for the KibAPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngFor="let itemNama of data;  let i=index">
+      <div *ngIf="i < 1">
+        Detail Info Kib B
+
+
+      </div>
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <ion-fab top right edge *ngFor="let dataId of data">
+    <button *ngIf="dataId.koordinat != null" (click)="maps(dataId.idbi)" ion-fab mini style="background: #ea4e4e;"> <ion-icon ios="ios-pin" md="md-pin"></ion-icon></button>
+  </ion-fab>
+
+  <ion-content class="card-content">
+
+    <ion-card  *ngFor="let item of data" >
+    
+    
+      <ion-card-content *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
+        <ion-card-title>
+          {{ item.nm_barang }}
+        </ion-card-title>
+    
+        <ion-item  text-wrap (click)="toggleGroup(i)" [ngClass]="{active: isGroupShown(i)}">
+            <ion-label class="label label-md" style="min-height: 29px; padding-bottom: 0%; padding-top: 1%;">
+                  <b>
+                    <h2>
+                    Kode Barang
+                      <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'" 
+                      style="
+                      color: #d49624;
+                      text-align:  right;
+                      float:  right;
+                      margin-bottom: 0px;
+                      margin-right: 0px;
+                      margin-top: -3px;
+                      ">
+                    </ion-icon>
+                    </h2>
+                  </b>
+                  </ion-label>
+                </ion-item>
+                <div *ngIf="isGroupShown(i)"> 
+                <ion-item text-wrap  style="background: #fbfbfb;">
+                        <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                            Kode Barang
+                         </h3></b>
+                        <h4 style="font-size: 12px;  margin-left: 6px;">
+                          {{ item.id_barang }}
+                        </h4>
+                </ion-item>
+      
+                    <ion-item text-wrap  style="background: #fbfbfb;">
+                        <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                            ID Barang
+                         </h3></b>
+                        <h4 style="font-size: 12px;  margin-left: 6px;">
+                          {{ item.idbi }}
+                        </h4>
+                    </ion-item>
+      
+                    <ion-item text-wrap  style="background: #fbfbfb;">
+                        <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                            ID Awal	
+                         </h3></b>
+                        <h4 style="font-size: 12px;  margin-left: 6px;">
+                          {{ item.idawal }}
+                        </h4>
+                    </ion-item>
+                </div>
+
+                
+ 
+        <ion-item text-wrap>
+            <b><h2> Urusan </h2></b>
+            <h3>{{ item.urusan }}</h3>
+        </ion-item>
+    
+        <ion-item text-wrap>
+            <b><h2> Bidang </h2></b>
+            <h3>{{ item.bidang }}</h3>
+        </ion-item>
+    
+        <ion-item text-wrap>
+            <b><h2> SKPD </h2></b>
+            <h3>{{ item.skpd }}</h3>
+        </ion-item>
+
+        <ion-item text-wrap>
+          <b><h2> Unit </h2></b>
+          <h3>{{ item.unit }}</h3>
+      </ion-item>
+
+      <ion-item text-wrap>
+        <b><h2> Sub Unit </h2></b>
+        <h3>{{ item.subUnit }}</h3>
+    </ion-item>
+
+      <ion-item text-wrap>
+          <b><h2>Harga</h2></b>
+          <h3>{{ item.harga }}</h3>
+      </ion-item>
+
+      <ion-item text-wrap>
+          <b><h2>Bahan</h2></b>
+          <h3>{{ item.bahan }}</h3>
+      </ion-item>
+
+      <ion-item text-wrap>
+          <b><h2>Ukuran / CC</h2></b>
+          <h3>{{ item.ukuran }}</h3>
+      </ion-item>
+
+      <ion-item text-wrap>
+          <b><h2>Merk</h2></b>
+          <h3>{{ item.merk }}</h3>
+      </ion-item>
+
+      <ion-item  text-wrap (click)="toggleGroup1(i)">
+          <ion-label class="label label-md" style="min-height: 29px; padding-bottom: 0%; padding-top: 1%;">
+                <b>
+                  <h2>
+                      Nomer	
+                    <ion-icon color="success" item-right [name]="isGroupShown1(i) ? 'arrow-dropdown' : 'arrow-dropright'" 
+                    style="
+                    color: #d49624;
+                    text-align:  right;
+                    float:  right;
+                    margin-bottom: 0px;
+                    margin-right: 0px;
+                    margin-top: -3px;
+                    ">
+                  </ion-icon>
+                  </h2>
+                </b>
+                </ion-label>
+              </ion-item>
+              <div *ngIf="isGroupShown1(i)"> 
+              <ion-item text-wrap  style="background: #fbfbfb;">
+                      <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                         Pabrik
+                       </h3></b>
+                      <h4 style="font-size: 12px;  margin-left: 6px;">
+                        {{ item.no_pabrik }}
+                      </h4>
+              </ion-item>
+
+              <ion-item text-wrap  style="background: #fbfbfb;">
+                  <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                      Rangka
+                   </h3></b>
+                  <h4 style="font-size: 12px;  margin-left: 6px;">
+                    {{ item.no_rangka }}
+                  </h4>
+          </ion-item>
+
+          <ion-item text-wrap  style="background: #fbfbfb;">
+              <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+                  Mesin
+               </h3></b>
+              <h4 style="font-size: 12px;  margin-left: 6px;">
+                {{ item.no_mesin }}
+              </h4>
+      </ion-item>
+
+      <ion-item text-wrap  style="background: #fbfbfb;">
+          <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+              Polisi
+           </h3></b>
+          <h4 style="font-size: 12px;  margin-left: 6px;">
+            {{ item.no_polisi }}
+          </h4>
+  </ion-item>
+
+  <ion-item text-wrap  style="background: #fbfbfb;">
+      <b><h3 style="font-weight:bold;color: #d49624;font-weight:bold;  margin-left: 6px;">
+          BPKB
+       </h3></b>
+      <h4 style="font-size: 12px;  margin-left: 6px;">
+        {{ item.no_bpkb }}
+      </h4>
+</ion-item>
+
+          
+            </div>
+
+    <ion-item text-wrap >
+        <b><h2>Tahun Perolehan</h2></b>
+        <h3>{{ item.thn_perolehan }}</h3>
+    </ion-item>
+
+    <ion-item text-wrap >
+      <b><h2>Cara Perolehan</h2></b>
+      <h3>{{ item.asal_usul }}</h3>
+    </ion-item>
+
+    <ion-item text-wrap >
+      <b><h2>Sumber Dana</h2></b>
+      <h3>{{ item.jns_hibah }}</h3>
+    </ion-item>
+
+    <ion-item text-wrap >
+      <b><h2>Status Barang</h2></b>
+      <h3>{{ item.status_barang }}</h3>
+    </ion-item>
+
+
+    <ion-item text-wrap >
+      <b><h2>Kondisi</h2></b>
+      <h3>{{ item.kondisi }}</h3>
+    </ion-item>
+      
+        
+    
+      </ion-card-content>
+    
+    
+    </ion-card>
+    
+
+
+</ion-content>

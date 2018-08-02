@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+      <ion-buttons left>
+          <button ion-button icon-only (click)="home()" style="color: white;">
+            <ion-icon name="md-arrow-round-back"></ion-icon>
+          </button>
+      </ion-buttons>
+
+    <ion-title>
+      My Profile
+    </ion-title>
+
+
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contact-content" >
+  <ion-card *ngFor="let item of data" >
+
+    <ion-item>
+      <ion-item class="item-profile">
+        <div class="item-avatar">
+            <button (click)="UploadImage(item.id)" style="border-radius: 10%;height: 28px;background: white;width:  36px;z-index: 12;border: 1px solid #525252;position:  absolute;">
+                <ion-icon style="color: #3764ab;" ios="ios-camera" md="md-camera"></ion-icon>
+              </button>
+          <img (click)="viewImage(item.image)" class="thumbnail" src="{{ urlService }}atis/view_img.php?photoprofil=1&fname={{ item.image }}">
+        </div>
+      </ion-item>
+    </ion-item>
+
+    <ion-card-content style="TEXT-ALIGN: center;">
+      <h1>{{ item.nama }}</h1>
+      <h2>{{ item.nama_instansi }}</h2>
+    </ion-card-content>
+   
+  
+  </ion-card>
+
+  <ion-list *ngFor="let ListItem of data">
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>Akses</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.level }}</span> 
+    </ion-item>
+
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>Urusan</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.urusan }}</span> 
+    </ion-item>
+
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>Bidang</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.bidang }}</span> 
+    </ion-item>
+
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>SKPD</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.skpd }}</span> 
+    </ion-item>
+
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>Unit</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.unit }}</span> 
+    </ion-item>
+
+    <ion-item style="color: black;padding-left:  0px;margin-left: 8px; border-bottom: 1px solid #c7e2e6;">
+        <b>Sub Unit</b> 
+      <span style="text-align:  right;float:  right;">{{ ListItem.subUnit }}</span> 
+    </ion-item>
+
+  </ion-list>
+
+
+  <!-- <ion-fab bottom style="width: 100%;bottom: 0;text-align:  center;background: #ffffff;margin-top: 14px;border-top: 1px solid #afafaf;">
+      <ion-row>
+              <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;" (click)="route('home')">
+                  <button  style="color: #7b8184;" ion-button clear small color="danger" icon-start>
+                          <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                   Home
+                  </button>
+                </ion-col>
+          
+              <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;" (click)="route('about')">
+                  <button style="color: #7b8184;" ion-button clear small color="danger" icon-start>
+                    <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
+                    About
+                  </button>
+             </ion-col>
+  
+             <ion-col col-4  style="padding: 0px;">
+              <button style="color: #1fafdc;" ion-button clear small color="danger" icon-start>
+                <ion-icon ios="ios-person" md="md-person"></ion-icon>
+                Profile
+              </button>
+         </ion-col>
+  
+      </ion-row>
+    </ion-fab> -->
+
+</ion-content>

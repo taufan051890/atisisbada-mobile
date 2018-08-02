@@ -1,0 +1,153 @@
+<ion-header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons left>
+            <button ion-button icon-only  (click)="home()">
+               <ion-icon name="md-arrow-round-back"></ion-icon>
+            </button> 
+          </ion-buttons>
+
+      <ion-title *ngFor="let itemNama of data;  let i=index">
+        <div *ngIf="i < 1">
+            {{ itemNama.namaPage }}
+        </div>
+      </ion-title>
+  </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content class="home-content" padding style='background-color: #c1fffb;'>
+  
+    <h1>
+      <button ion-button color="dark" full (click)="scan()">Start Scan</button>
+    </h1>
+  
+  
+    <ion-card *ngIf="productFound">
+      <ion-card-content>
+          <ion-card-title>
+              Kode : {{ selectedProduct.plu }}
+            </ion-card-title>
+        
+            <ion-item *ngIf="selectedProduct.field1">
+                <b><h2>{{ selectedProduct.nama1 }}</h2></b>
+                <h3>{{ selectedProduct.field1 }}</h3>
+            </ion-item>
+        
+            <ion-item *ngIf="selectedProduct.field2">
+                <b><h2>{{ selectedProduct.nama2 }}</h2></b>
+                <h3>{{ selectedProduct.field2 }}</h3>
+            </ion-item>
+        
+            <ion-item *ngIf="selectedProduct.field3">
+                <b><h2>{{ selectedProduct.nama3 }}</h2></b>
+                <h3>{{ selectedProduct.field3 }}</h3>
+            </ion-item>
+        
+            <ion-item *ngIf="selectedProduct.field4">
+                <b><h2>{{ selectedProduct.nama4 }}</h2></b>
+                <h3>{{ selectedProduct.field4 }}</h3>
+            </ion-item>
+            <ion-item *ngIf="selectedProduct.field5">
+                <b><h2>{{ selectedProduct.nama5 }}</h2></b>
+                <h3>{{ selectedProduct.field5 }}</h3>
+            </ion-item>
+             
+            <ion-item *ngIf="selectedProduct.field6">
+                <b><h2>{{ selectedProduct.nama6 }}</h2></b>
+                <h3>{{ selectedProduct.field6 }}</h3>
+            </ion-item>
+            
+            <ion-item *ngIf="selectedProduct.field7">
+                <b><h2>{{ selectedProduct.nama7 }}</h2></b>
+                <h3>{{ selectedProduct.field7 }}</h3>
+            </ion-item>
+            
+            <ion-item *ngIf="selectedProduct.field8">
+                <b><h2>{{ selectedProduct.nama8 }}</h2></b>
+                <h3>{{ selectedProduct.field8 }}</h3>
+            </ion-item>
+            
+            <ion-item *ngIf="selectedProduct.field9">
+                <b><h2>{{ selectedProduct.nama9 }}</h2></b>
+                <h3>{{ selectedProduct.field9 }}</h3>
+            </ion-item>
+        
+            <ion-item *ngIf="selectedProduct.field10">
+                <b><h2>{{ selectedProduct.nama10 }}</h2></b>
+                <h3>{{ selectedProduct.field10 }}</h3>
+            </ion-item>
+        
+            <ion-item *ngIf="selectedProduct.field11">
+                <b><h2>{{ selectedProduct.nama11 }}</h2></b>
+                <h3>{{ selectedProduct.field11 }}</h3>
+            </ion-item>
+            
+            <ion-item *ngIf="selectedProduct.field12">
+                <b><h2>{{ selectedProduct.nama12 }}</h2></b>
+                <h3>{{ selectedProduct.field12 }}</h3>
+            </ion-item>
+            <ion-item *ngIf="selectedProduct.field13">
+                <b><h2>{{ selectedProduct.nama13 }}</h2></b>
+                <h3>{{ selectedProduct.field13 }}</h3>
+            </ion-item>
+
+            
+        <!-- <ul>
+          <li *ngIf="selectedProduct.nama1">
+            {{ selectedProduct.nama1 }} : {{ selectedProduct.field1 }}
+          </li>
+          <li *ngIf="selectedProduct.nama2">
+            {{ selectedProduct.nama2 }} : {{ selectedProduct.field2 }}
+          </li>
+          
+          <li *ngIf="selectedProduct.nama3">
+            {{ selectedProduct.nama3 }} : {{ selectedProduct.field3 }}
+          </li>
+          
+          <li *ngIf="selectedProduct.nama4">
+            {{ selectedProduct.nama4 }} : {{ selectedProduct.field4 }}
+          </li>
+          
+          <li *ngIf="selectedProduct.nama5">
+            {{ selectedProduct.nama5 }} : {{ selectedProduct.field5 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama6">
+            {{ selectedProduct.nama6 }} : {{ selectedProduct.field6 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama7">
+            {{ selectedProduct.nama7 }} : {{ selectedProduct.field7 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama8">
+            {{ selectedProduct.nama8 }} : {{ selectedProduct.field8 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama9">
+            {{ selectedProduct.nama9 }} : {{ selectedProduct.field9 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama10">
+            {{ selectedProduct.nama10 }} : {{ selectedProduct.field10 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama11">
+            {{ selectedProduct.nama11 }} : {{ selectedProduct.field11 }}
+          </li>
+          
+          <li *ngIf="selectedProduct.nama12">
+            {{ selectedProduct.nama12 }} : {{ selectedProduct.field12 }}
+          </li>
+
+          <li *ngIf="selectedProduct.nama13">
+            {{ selectedProduct.nama13 }} : {{ selectedProduct.field13 }}
+          </li>
+  
+        </ul> -->
+      </ion-card-content>
+    </ion-card>
+  
+  </ion-content>
+  

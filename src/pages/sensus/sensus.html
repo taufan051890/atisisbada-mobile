@@ -1,0 +1,132 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+
+      <ion-buttons left>
+          <button ion-button icon-only  (click)="home()">
+             <ion-icon name="md-arrow-round-back"></ion-icon>
+          </button> 
+        </ion-buttons>
+
+    <ion-title>
+        SENSUS
+    </ion-title>
+
+</ion-navbar>
+
+</ion-header>
+
+<ion-content class="home-content" padding style='background-color: #efefef;'>
+
+
+
+  <ion-card style="margin: 0 !important; width: calc(100% - 0px);" *ngIf="productFound">
+      
+    <div style=" background: #0bb991; color: white; padding: 3%;" *ngIf="selectedProduct.mode == 1">
+          <ion-icon ios="ios-alert" md="md-alert"></ion-icon>
+          Inventarisasi Barang Sukses
+      </div>
+
+      <div style=" background: #b6b90b; color: white; padding: 3%;" *ngIf="selectedProduct.mode == 2">
+          <ion-icon ios="ios-alert" md="md-alert"></ion-icon>
+           Sudah Di Inventarisasi
+      </div>
+
+      <div style=" background: #b90b43; color: white; padding: 3%;" *ngIf="selectedProduct.mode == 3">
+          <ion-icon ios="ios-alert" md="md-alert"></ion-icon>
+         ID Barang Tidak Ditemukan
+      </div>
+
+    <ion-card-content class="sensus" *ngIf="selectedProduct.mode == 1">
+        <ion-card-title>
+            ID Barang : {{ selectedProduct.idbi }}
+          </ion-card-title>
+      
+          <ion-item>
+              <b><h2>Nama Barang</h2></b>
+              <h3>{{ selectedProduct.nm_barang }}</h3>
+          </ion-item>
+
+          <ion-item>
+            <b><h2>Kondisi</h2></b>
+            <h3>{{ selectedProduct.kondisi }}	</h3>
+        </ion-item>
+          
+        <ion-row style="text-align:  center;">
+          <ion-col style="border-right: 1px solid #c5bcbc;background-color: #04c2e4;">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="home()">
+                      <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                 Kembali
+              </button>
+            </ion-col>
+      
+          <ion-col style=" background: #0bb991; ">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="scan()">
+                  <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                Scan
+              </button>
+         </ion-col>
+       </ion-row>
+
+    </ion-card-content>
+
+    <ion-card-content class="sensus" *ngIf="selectedProduct.mode == 2">
+        <ion-card-title>
+            ID Barang : {{ selectedProduct.idbi }}
+          </ion-card-title>
+      
+          <ion-item>
+              <b><h2>Nama Barang</h2></b>
+              <h3>{{ selectedProduct.nm_barang }}</h3>
+          </ion-item>
+
+          <ion-item>
+            <b><h2>Kondisi</h2></b>
+            <h3>{{ selectedProduct.kondisi }}	</h3>
+        </ion-item>
+          
+        <ion-row style="text-align:  center;">
+          <ion-col style="border-right: 1px solid #c5bcbc;background-color: #04c2e4;">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="home()">
+                      <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                 Kembali
+              </button>
+            </ion-col>
+      
+          <ion-col style=" background: #0bb991; ">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="scan()">
+                  <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                Scan
+              </button>
+         </ion-col>
+       </ion-row>
+
+    </ion-card-content>
+
+    <ion-card-content class="sensus" *ngIf="selectedProduct.mode == 3">
+        <ion-card-title>
+            ID Barang : {{ selectedProduct.idbi }}
+          </ion-card-title>
+      
+          
+        <ion-row style="text-align:  center;">
+          <ion-col style="border-right: 1px solid #c5bcbc;background-color: #04c2e4;">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="home()">
+                      <ion-icon ios="ios-home" md="md-home"></ion-icon>
+                 Kembali
+              </button>
+            </ion-col>
+      
+          <ion-col style=" background: #0bb991; ">
+              <button style="color: #fff;" ion-button clear small color="danger" icon-start (click)="scan()">
+                  <ion-icon ios="ios-search" md="md-search"></ion-icon>
+                Scan
+              </button>
+         </ion-col>
+       </ion-row>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
