@@ -4,10 +4,13 @@ import { ScanerqrlayoutPage } from './scanerqrlayout';
 
 @NgModule({
   declarations: [
-    ScanerqrlayoutPage,
+    ScanerqrlayoutPage
   ],
   imports: [
-    IonicPageModule.forChild(ScanerqrlayoutPage),
+    IonicPageModule.forChild(ScanerqrlayoutPage)
   ],
+  entryComponents: [
+    ScanerqrlayoutPage
+  ]
 })
 export class ScanerqrlayoutPageModule {}

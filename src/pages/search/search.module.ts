@@ -4,10 +4,13 @@ import { SearchPage } from './search';
 
 @NgModule({
   declarations: [
-    SearchPage,
+    SearchPage
   ],
   imports: [
-    IonicPageModule.forChild(SearchPage),
+    IonicPageModule.forChild(SearchPage)
   ],
+  entryComponents: [
+    SearchPage
+  ]
 })
 export class SearchPageModule {}

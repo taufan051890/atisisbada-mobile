@@ -4,10 +4,13 @@ import { LoginPage } from './login';
 
 @NgModule({
   declarations: [
-    LoginPage,
+    LoginPage
   ],
   imports: [
-    IonicPageModule.forChild(LoginPage),
+    IonicPageModule.forChild(LoginPage)
   ],
+  entryComponents: [
+    LoginPage
+  ]
 })
 export class LoginPageModule {}

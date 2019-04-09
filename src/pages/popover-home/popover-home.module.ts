@@ -4,10 +4,13 @@ import { PopoverHomePage } from './popover-home';
 
 @NgModule({
   declarations: [
-    PopoverHomePage,
+    PopoverHomePage
   ],
   imports: [
-    IonicPageModule.forChild(PopoverHomePage),
+    IonicPageModule.forChild(PopoverHomePage)
   ],
+  entryComponents: [
+    PopoverHomePage
+  ]
 })
 export class PopoverHomePageModule {}

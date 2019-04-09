@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-import { RekapPage } from '../rekap/rekap';
+// import { RekapPage } from '../rekap/rekap';
 import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the CariSkpdPage page.
@@ -37,6 +37,9 @@ export class CariSkpdPage {
     this.dataSelect.SKPD = '';
     this.dataSelect.unit = '';
     this.dataSelect.subunit = '';
+
+    this.GlobalProvider.url=localStorage.getItem("server");
+
 console.log("skpdSession"+localStorage.getItem("skpdSession"));
     if(localStorage.getItem("skpdSession") != undefined){
       let loader = this.loadingCtrl.create({
@@ -63,7 +66,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
         this.dataSelect.subunit = myarr[4];
 
         loader.present().then(() => {
-          this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
+          this.http.get(this.GlobalProvider.url+'pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
           .map(result => result.json())
           .subscribe(dataBidang => {
       
@@ -74,7 +77,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
             console.log(err);
           });
 
-          this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
+          this.http.get(this.GlobalProvider.url+'pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
           .map(result => result.json())
           .subscribe(dataSKPD => {
         
@@ -85,7 +88,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
             console.log(err);
           });
 
-          this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
+          this.http.get(this.GlobalProvider.url+'pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
           .map(result => result.json())
           .subscribe(dataUnit => {
           
@@ -97,7 +100,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
           });
 
 
-          this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
+          this.http.get(this.GlobalProvider.url+'pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
           .map(result => result.json())
           .subscribe(dataSubUnit => {
           
@@ -132,7 +135,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
       
 
       loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/urusan.php'+linkSkpd)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/search/urusan.php'+linkSkpd)
       .map(result => result.json())
       .subscribe(dataUrusan => {
 
@@ -174,7 +177,7 @@ console.log("skpdSession"+localStorage.getItem("skpdSession"));
       console.log(linkSkpd);
     }
     loader.present().then(() => {
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
     .map(result => result.json())
     .subscribe(dataBidang => {
 
@@ -206,7 +209,7 @@ changeSKPD(){
     console.log(linkSkpd);
   }
   loader.present().then(() => {
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
   .map(result => result.json())
   .subscribe(dataSKPD => {
 
@@ -237,7 +240,7 @@ if (skpdOperator == undefined){
   console.log(linkSkpd);
 }
 loader.present().then(() => {
-this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
+this.http.get(this.GlobalProvider.url+'pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
 .map(result => result.json())
 .subscribe(dataUnit => {
 
@@ -269,7 +272,7 @@ if (skpdOperator == undefined){
 
 console.log('sub unit');
 loader.present().then(() => {
-this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
+this.http.get(this.GlobalProvider.url+'pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
 .map(result => result.json())
 .subscribe(dataSubUnit => {
 
@@ -290,7 +293,7 @@ submit() {
 
   this.search = '&c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+'&e1='+this.dataSelect.subunit;
   loader.present().then(() => {
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/nmSKPD.php?'+this.search)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/nmSKPD.php?'+this.search)
   .map(result => result.json())
   .subscribe(nmSKPD => {
 
@@ -308,7 +311,11 @@ submit() {
     //   status :nmSKPD.result[0].status,
     // });
   
-    if(this.dataSelect.urusan != ''){
+
+
+      if(this.dataSelect.urusan === ''){
+        this.dataSelect.urusan ="00";
+      }
 
       if(this.dataSelect.bidang === ''){
         this.dataSelect.bidang ="00";
@@ -328,11 +335,11 @@ submit() {
       
       localStorage.setItem("skpdSession",this.dataSelect.urusan+'.'+this.dataSelect.bidang+'.'+this.dataSelect.SKPD+'.'+this.dataSelect.unit+'.'+this.dataSelect.subunit);
       console.log("SKPDnya " +localStorage.getItem("skpdSession") );
-    }
+    
 
     this.viewCtrl.dismiss();
 
-    this.appCtrl.getRootNav().setRoot(RekapPage, {
+    this.appCtrl.getRootNav().setRoot('RekapPage', {
       search: this.search,
       c1nama :nmSKPD.result[0].c1nama,
       cnama :nmSKPD.result[0].cnama,

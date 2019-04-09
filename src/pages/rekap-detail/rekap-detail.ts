@@ -4,7 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Storage } from '@ionic/storage';
-import { CarddataPage } from '../carddata/carddata';
+// import { CarddataPage } from '../carddata/carddata';
 import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the RekapDetailPage page.
@@ -31,6 +31,7 @@ export class RekapDetailPage {
     skpdRekap : string;
     skpdOperator :string;
   constructor(public GlobalProvider:GlobalProvider,public appCtrl: App,public storage: Storage,public loadingCtrl: LoadingController, public http: Http,public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
+    this.GlobalProvider.url=localStorage.getItem("server");
     this.f = navParams.get('f');
     this.g = navParams.get('g');
     this.h = navParams.get('h');
@@ -69,6 +70,21 @@ console.log(this.nama+'kntlls');
       var mystrs = localStorage.getItem("skpdSession");
       var myarrs = mystrs.split(".");
 
+      if(myarrs[0] === '00'){
+        myarrs[0] ='';
+      }
+      if(myarrs[1] === '00'){
+        myarrs[1] ='';
+      }
+      if(myarrs[2] === '00'){
+        myarrs[2] ='';
+      }
+      if(myarrs[3] === '00'){
+        myarrs[3] ='';
+      }
+      if(myarrs[4] === '000'){
+        myarrs[4] ='';
+      }
 
       this.skpdOperator = '&c1='+myarrs[0]+'&c='+myarrs[1]+'&d='+myarrs[2]+'&e='+myarrs[3]+'&e1='+myarrs[4];
     }
@@ -89,7 +105,7 @@ console.log(this.nama+'kntlls');
 
 
       loader.present().then(() => {
-        this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/detail.php?'+"&f="+this.f+"&g="+this.g+"&h="+this.h+"&i="+this.i+"&j="+this.j+"&nm_barang="+this.nama+this.skpd+this.skpdOperator)
+        this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/detail.php?'+"&f="+this.f+"&g="+this.g+"&h="+this.h+"&i="+this.i+"&j="+this.j+"&nm_barang="+this.nama+this.skpd+this.skpdOperator)
         .map(result => result.json())
         .subscribe(data => {
           this.data = data.result;
@@ -133,7 +149,7 @@ console.log(this.nama+'kntlls');
       this.storage.get('pageSession').then((val) => {
         console.log('Kamu Memilih Page', val);
       });
-      this.appCtrl.getRootNav().setRoot(CarddataPage, {
+      this.appCtrl.getRootNav().setRoot('CarddataPage', {
         kodeBarangRekap: this.skpdRekap,
         skpd : this.skpd,
   
@@ -150,7 +166,7 @@ console.log(this.nama+'kntlls');
           console.log('Kamu Memilih Page', val);
         });
 
-        this.appCtrl.getRootNav().setRoot(CarddataPage, {
+        this.appCtrl.getRootNav().setRoot('CarddataPage', {
           kodeBarangRekap: this.skpdRekap,
           skpd : this.skpd,
     
@@ -167,7 +183,7 @@ console.log(this.nama+'kntlls');
           console.log('Kamu Memilih Page', val);
         });
 
-        this.appCtrl.getRootNav().setRoot(CarddataPage, {
+        this.appCtrl.getRootNav().setRoot('CarddataPage', {
           kodeBarangRekap: this.skpdRekap,
           skpd : this.skpd,
     
@@ -184,7 +200,7 @@ console.log(this.nama+'kntlls');
         console.log('Kamu Memilih Page', val);
       });
 
-      this.appCtrl.getRootNav().setRoot(CarddataPage, {
+      this.appCtrl.getRootNav().setRoot('CarddataPage', {
         kodeBarangRekap:this.skpdRekap,
         skpd : this.skpd,
   
@@ -201,7 +217,7 @@ console.log(this.nama+'kntlls');
         console.log('Kamu Memilih Page', val);
       });
 
-      this.appCtrl.getRootNav().setRoot(CarddataPage, {
+      this.appCtrl.getRootNav().setRoot('CarddataPage', {
         kodeBarangRekap: this.skpdRekap,
         skpd : this.skpd,
   
@@ -218,7 +234,7 @@ console.log(this.nama+'kntlls');
         console.log('Kamu Memilih Page', val);
       });
 
-      this.appCtrl.getRootNav().setRoot(CarddataPage, {
+      this.appCtrl.getRootNav().setRoot('CarddataPage', {
         kodeBarangRekap: this.skpdRekap,
         skpd : this.skpd,
   
@@ -235,7 +251,7 @@ console.log(this.nama+'kntlls');
         console.log('Kamu Memilih Page', val);
       });
 
-      this.appCtrl.getRootNav().setRoot(CarddataPage, {
+      this.appCtrl.getRootNav().setRoot('CarddataPage', {
         kodeBarangRekap: this.skpdRekap,
         skpd : this.skpd,
   

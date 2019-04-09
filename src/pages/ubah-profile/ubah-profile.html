@@ -1,0 +1,61 @@
+<!--
+  Generated template for the UbahProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>
+      Ubah Profile
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor="let item of data" >
+
+    <ion-item>
+      <ion-label stacked>Nama User</ion-label>
+      <ion-input type="text"  [(ngModel)]="dataValue.nama"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Password Lama</ion-label>
+      <ion-input type="password" [(ngModel)]="dataValue.passwordLama"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Password Baru</ion-label>
+      <ion-input type="password" [(ngModel)]="dataValue.passwordBaru"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Konfirmasi Password Baru</ion-label>
+      <ion-input type="password" [(ngModel)]="dataValue.passwordBaru2"></ion-input>
+    </ion-item>
+
+
+
+  </ion-list>
+
+  <ion-fab  bottom style="width: 100%; bottom: 0; text-align:  center; background: #f19d36;" >
+    <ion-row>                    
+            <ion-col icon-start (click)="Ubah(this.idUser)">
+                <button style="color: #fff; font-size: 13px;" ion-button clear small color="danger" >
+                    <span style="color: #fff; font-size: 13px !important;">
+                        UBAH
+                    </span>  
+                </button>
+           </ion-col>
+    </ion-row>
+  </ion-fab>
+</ion-content>

@@ -9,9 +9,10 @@ import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { ActionSheetController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { ModalController } from 'ionic-angular';
 /**
  * Generated class for the CardlayoutPage page.
  *
@@ -19,6 +20,9 @@ import { GlobalProvider } from '../../providers/global/global';
  * Ionic pages and navigation.
  */
 // private toastCtrl: ToastController,
+import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -43,12 +47,15 @@ export class ContactPage {
   searchS : string;
   sortS : string;
   urlService: string;
-  constructor(public GlobalProvider:GlobalProvider,public actionSheetCtrl: ActionSheetController,private photoViewer: PhotoViewer,public platform: Platform,private camera : Camera,private toastCtrl: ToastController,public loadingCtrl: LoadingController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public http: Http) {
+  IdUser:string;
+  NamaUser:string;
+  constructor(public modalCtrl: ModalController,public GlobalProvider:GlobalProvider,public actionSheetCtrl: ActionSheetController,private photoViewer: PhotoViewer,public platform: Platform,private camera : Camera,private toastCtrl: ToastController,public loadingCtrl: LoadingController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public http: Http) {
     this.http = http;
     this.dataCode.response = '';
     this.searchS = navParams.get('search');
     this.sortS = navParams.get('sort');
-    this.urlService = this.GlobalProvider.url;
+    this.urlService = localStorage.getItem("server");
+    this.GlobalProvider.url=localStorage.getItem("server");
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
       });
@@ -56,7 +63,7 @@ export class ContactPage {
 
   myHandlerFunction(){
     // this.navCtrl.popTo(this.navCtrl.getByIndex(this.navCtrl.length()-3));
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push('HomePage');
    }
 
   presentLoading() {
@@ -74,11 +81,11 @@ export class ContactPage {
   }
 
   viewImage(url){
-    this.photoViewer.show(this.GlobalProvider.url+'atis/view_img.php?photoprofil=1&fname='+url);
-    console.log(this.GlobalProvider.url+'atis/view_img.php?photoprofil=1&fname='+url);
+    this.photoViewer.show(this.GlobalProvider.url+'view_img.php?photoprofil=1&fname='+url);
+    console.log(this.GlobalProvider.url+'view_img.php?photoprofil=1&fname='+url);
   }
   home(){
-    this.appCtrl.getRootNav().setRoot(HomePage);
+    this.appCtrl.getRootNav().setRoot('HomePage');
    }
 
 
@@ -95,6 +102,7 @@ export class ContactPage {
       quality: 40, // picture quality
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
+      allowEdit: true,
       mediaType: this.camera.MediaType.PICTURE
     }
     this.presentLoading();
@@ -104,7 +112,7 @@ export class ContactPage {
         this.photos.reverse();
         var hasil = this.base64Image;
 
-        var link = this.GlobalProvider.url+'atis/pages/api/api/profile/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/profile/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.loadUser();
         this.http.post(link, myData)
@@ -143,7 +151,7 @@ export class ContactPage {
         this.photos.reverse();
         var hasil = this.base64Image;
 
-        var link = this.GlobalProvider.url+'atis/atis/pages/api/api/profile/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/profile/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.loadUser();
         this.http.post(link, myData)
@@ -178,12 +186,14 @@ export class ContactPage {
       this.storage.get('pageSession').then((val) => {
         console.log('Kamu Memilih Page', val);
         var username = localStorage.getItem("username");
-        this.http.get(this.GlobalProvider.url+'atis/pages/api/api/profile/profile.php?id='+username)
+        this.http.get(this.GlobalProvider.url+'pages/api/api/profile/profile.php?id='+username)
         .map(result => result.json())
         .subscribe(data => {
           this.data = data.result;
+          this.IdUser = username;
+           this.NamaUser = data.result[0].nama;
           console.log(data.result);
-          
+          loader.dismiss();
         },err => {
           console.log(err);
         }
@@ -191,7 +201,7 @@ export class ContactPage {
       );
     });
 
-      loader.dismiss();
+
     });
 
 
@@ -243,6 +253,14 @@ presentToast(response) {
   });
 
   toast.present();
+}
+
+EditData(id,nama){
+  const modal = this.modalCtrl.create('UbahProfilePage',{
+    id:id,
+    nama:nama
+  });
+  modal.present();
 }
 
 }

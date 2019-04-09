@@ -13,31 +13,85 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-    <!-- <ion-fab bottom style="width: 100%;bottom: 0;text-align:  center;background: #ffffff;margin-top: 14px;border-top: 1px solid #afafaf;">
-        <ion-row>
-                <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;" (click)="route('home')">
-                    <button  style="color: #7b8184;" ion-button clear small color="danger" icon-start>
-                            <ion-icon ios="ios-home" md="md-home"></ion-icon>
-                     Home
-                    </button>
+  <ion-card>
+    <img src="assets/imgs/bannerAbout.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+       ATISISBADA Mobile
+        </ion-card-title>
+      <p>
+         Adalah sebuah aplikasi berbasis Mobile yang sangat fleksibel untuk digunakan dan di akses dimana saja,
+        Dengan Aplikasi ini kita dapat melakukan pengecekan data dengan sangat mudah dan cepat.
+        Selain itu Aplikasi ini mempunya Fitur sebagai Berikut :
+      </p>
+
+       <ion-grid>
+          <ion-row>
+            <ion-col col-2 (click)="page('95')">
+                <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBA.png">
+            </ion-col>
+            <ion-col col-10 style="margin-top:  2%;" (click)="page('95')">Tanah</ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col col-2 (click)="page('87')">
+                  <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBB.png">
+              </ion-col>
+              <ion-col col-10 style="margin-top:  2%;" (click)="page('87')">Peralatan Dan Mesin</ion-col>
+
+            </ion-row>
+        
+            <ion-row>
+                <ion-col col-2 (click)="page('88')">
+                    <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBC.png">
+                </ion-col>
+                <ion-col col-10 style="margin-top:  2%;" (click)="page('88')">Gedung Dan Bangunan</ion-col>
+              </ion-row>
+        
+              
+              <ion-row>
+                  <ion-col col-2 (click)="page('89')">
+                      <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBD.png">
                   </ion-col>
+                  <ion-col col-10 style="margin-top:  2%;" (click)="page('89')">Jalan,Irigasi Dan Jaringan</ion-col>
+                  
+                  <ion-col col-2 (click)="page('90')">
+                        <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBE.png">
+                  </ion-col>
+                  <ion-col col-10 style="margin-top:  2%;" (click)="page('90')">Aset Tetap Lainnya</ion-col>
+
+                  <ion-col col-2 (click)="page('91')">
+                    <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBF.png">
+                </ion-col>
+                <ion-col col-10 style="margin-top:  2%;" (click)="page('91')">Kontruksi Dalam Pengerjaan</ion-col>
+
+                <ion-col col-2 (click)="page('92')">
+                    <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/KIBG.png">
+                </ion-col>
+                <ion-col col-10 style="margin-top:  2%;" (click)="page('92')">Aset Tak Berwujud</ion-col>
+                
+                  <ion-col col-2 (click)="Sensus()">
+                      <img style="width: 75%;" src="assets/imgs/sensus.png">
+                  </ion-col>
+                  <ion-col col-10 style="margin-top:  2%;" (click)="Sensus()">SENSUS</ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col col-2 (click)="page('94')">
+                      <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/Barcode.png">
+                  </ion-col>
+                  <ion-col col-10 style="margin-top:  2%;" (click)="page('94')">Barcode</ion-col>
+                  <ion-col col-2 (click)="page('93')">
+                      <img style="width: 75%;" src="{{ urlService }}/pages/api/api/images/Colored/QRcode.png">
+                  </ion-col>
+                  <ion-col col-10 style="margin-top:  2%;" (click)="page('93')">QRcode</ion-col>
+              </ion-row>
             
-                <ion-col col-4 style="padding: 0px; border-right: 1px solid #c5bcbc;">
-                    <button style="color: #1fafdc;" ion-button clear small color="danger" icon-start>
-                      <ion-icon ios="ios-information-circle" md="md-information-circle"></ion-icon>
-                      About
-                    </button>
-               </ion-col>
-    
-               <ion-col col-4 (click)="route('profile')" style="padding: 0px;">
-                <button style="color: #7b8184;" ion-button clear small color="danger" icon-start>
-                  <ion-icon ios="ios-person" md="md-person"></ion-icon>
-                  Profile
-                </button>
-           </ion-col>
-    
-        </ion-row>
-      </ion-fab> -->
+        </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

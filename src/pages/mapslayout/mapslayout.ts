@@ -11,7 +11,9 @@ declare var google;
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+import { IonicPage } from 'ionic-angular';
+import { GlobalProvider } from '../../providers/global/global';
+@IonicPage()
 @Component({
   selector: 'page-mapslayout',
   templateUrl: 'mapslayout.html',
@@ -22,10 +24,11 @@ export class MapslayoutPage {
   map: any;
   idbi : string;
   table : string;
-  constructor(private socialSharing: SocialSharing,public navCtrl: NavController , public navParams: NavParams, public geolocation: Geolocation,public loadingCtrl: LoadingController, public http: Http) {
+  constructor(public GlobalProvider:GlobalProvider,private socialSharing: SocialSharing,public navCtrl: NavController , public navParams: NavParams, public geolocation: Geolocation,public loadingCtrl: LoadingController, public http: Http) {
     this.ionViewDidLoad();
     this.idbi = navParams.get('idbi');
     this.table = navParams.get('table');
+    this.GlobalProvider.url=localStorage.getItem("server");
   }
  
   ionViewDidLoad(){
@@ -41,7 +44,7 @@ export class MapslayoutPage {
 
     loader.present().then(() => {
 
-      this.http.get('http://123.231.253.228/atis/pages/api/api/KIBA/detail/data.php?id='+this.idbi+'&table='+this.table)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/KIBA/detail/data.php?id='+this.idbi+'&table='+this.table)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;

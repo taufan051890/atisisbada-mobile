@@ -4,13 +4,13 @@ import { ActionSheetController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Rekap2Page } from '../rekap2/rekap2';
-import { RekapDetailPage } from '../rekap-detail/rekap-detail';
+// import { Rekap2Page } from '../rekap2/rekap2';
+// import { RekapDetailPage } from '../rekap-detail/rekap-detail';
 import { ModalController } from 'ionic-angular';
-import { CariSkpdPage } from '../cari-skpd/cari-skpd';
+// import { CariSkpdPage } from '../cari-skpd/cari-skpd';
 import { PopoverController} from 'ionic-angular';
-import { PopoverHomePage } from '../popover-home/popover-home';
-import { HomePage } from '../home/home';
+// import { PopoverHomePage } from '../popover-home/popover-home';
+// import { HomePage } from '../home/home';
 import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the RekapPage page.
@@ -58,7 +58,7 @@ export class RekapPage {
     this.dnama = navParams.get('dnama');
     this.enama = navParams.get('enama');
     this.e1nama = navParams.get('e1nama');
-    
+    this.GlobalProvider.url=localStorage.getItem("server");
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
 
@@ -69,7 +69,7 @@ export class RekapPage {
       var myarr = mystr.split(".");
       this.search = '&c1='+myarr[0]+'&c='+myarr[1]+'&d='+myarr[2]+'&e='+myarr[3]+'&e1='+myarr[4];
 
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/nmSKPD.php?'+this.search)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/nmSKPD.php?'+this.search)
       .map(result => result.json())
       .subscribe(nmSKPD => {
         this.nmSKPD = nmSKPD.result;
@@ -92,7 +92,7 @@ export class RekapPage {
     var myarrs = mystrs.split(".");
     this.search = '&c1='+myarrs[0]+'&c='+myarrs[1]+'&d='+myarrs[2]+'&e='+myarrs[3]+'&e1='+myarrs[4];
 
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/nmSKPD.php?'+this.search)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/nmSKPD.php?'+this.search)
     .map(result => result.json())
     .subscribe(nmSKPD => {
       this.nmSKPD = nmSKPD.result;
@@ -129,12 +129,12 @@ export class RekapPage {
 
   myHandlerFunction(){
     // this.navCtrl.popTo(this.navCtrl.getByIndex(this.navCtrl.length()-3));
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push('HomePage');
    }
 
 
   openPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverHomePage);
+    let popover = this.popoverCtrl.create('PopoverHomePage');
     popover.present({
       ev: myEvent
     });
@@ -164,7 +164,7 @@ export class RekapPage {
       });
   
       loader.present().then(() => {
-        this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/rekap.php')
+        this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/rekap.php')
         .map(result => result.json())
         .subscribe(data => {
           this.data = data.result;
@@ -179,7 +179,7 @@ export class RekapPage {
 }
 
 cariSkpd(){
-  const modal = this.modalCtrl.create(CariSkpdPage);
+  const modal = this.modalCtrl.create('CariSkpdPage');
   modal.present();
 }
 
@@ -200,7 +200,7 @@ cariSkpd(){
           text: 'Lihat Selanjutnya',
           role: 'destructive',
           handler: () => {
-            this.navCtrl.push(Rekap2Page, {
+            this.navCtrl.push('Rekap2Page', {
               f: id,
               skpd:skpd,
               c1nama:this.c1nama,
@@ -216,7 +216,7 @@ cariSkpd(){
           text: 'Total Harga & Jumlah Barang',
           handler: () => {
 
-            const modal = this.modalCtrl.create(RekapDetailPage, {
+            const modal = this.modalCtrl.create('RekapDetailPage', {
               f: id,
               skpd:skpd,
               nama:nama

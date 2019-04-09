@@ -4,23 +4,23 @@ import { App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { LoginPage } from '../pages/login/login';
-import { CarddataPage } from '../pages/carddata/carddata';
-import { HomePage } from '../pages/home/home';
+// import { LoginPage } from '../pages/login/login';
+// import { 'CarddataPage' } from '../pages/carddata/carddata';
+// import { HomePage } from '../pages/home/home';
 import { MenuController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { ScanerlayoutPage } from '../pages/scanerlayout/scanerlayout';
 import { ScanerqrlayoutPage } from '../pages/scanerqrlayout/scanerqrlayout';
 
-import { SensusPage } from '../pages/sensus/sensus';
-import { RekapPage } from '../pages/rekap/rekap';
+// import { SensusPage } from '../pages/sensus/sensus';
+// import { RekapPage } from '../pages/rekap/rekap';
 var page;
 var username = localStorage.getItem("username");
  
 if(username === "logout" || username === undefined || username === null){
-  page = LoginPage;
+  page = 'LoginPage';
 }else{
-  page = HomePage;
+  page = 'HomePage';
 }
 
 @Component({
@@ -33,6 +33,13 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public appCtrl: App,private toastCtrl: ToastController,private storage: Storage,public menuCtrl: MenuController,public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+   
+    if (this.splashScreen) {
+      setTimeout(() => {
+          this.splashScreen.hide();
+      }, 100);
+  }
+  
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -45,17 +52,16 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
     });
   }
 
   Sensus(){
-    this.appCtrl.getRootNav().setRoot(SensusPage);
+    this.appCtrl.getRootNav().setRoot('SensusPage');
     this.menuCtrl.close();
   }
 
   Rekap(){
-    this.nav.push(RekapPage);
+    this.nav.push('RekapPage');
     this.menuCtrl.close();
   }
 
@@ -94,7 +100,7 @@ export class MyApp {
 
   page(kib){
     if(kib === 'kiba'){
-      this.nav.push(CarddataPage);
+      this.nav.push('CarddataPage');
 
       this.storage.ready().then(() => {
         this.storage.set('pageSession', '95');
@@ -105,7 +111,7 @@ export class MyApp {
 
       this.menuCtrl.close();
     }else if(kib === 'kibb'){
-        this.nav.push(CarddataPage);
+        this.nav.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '87');
@@ -116,7 +122,7 @@ export class MyApp {
   
         this.menuCtrl.close();
     }else if(kib === 'kibc'){
-        this.nav.push(CarddataPage);
+        this.nav.push('CarddataPage');
 
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '88');
@@ -127,7 +133,7 @@ export class MyApp {
 
         this.menuCtrl.close();
     }else if(kib === 'kibd'){
-      this.nav.push(CarddataPage);
+      this.nav.push('CarddataPage');
 
       this.storage.ready().then(() => {
         this.storage.set('pageSession', '89');
@@ -138,7 +144,7 @@ export class MyApp {
 
       this.menuCtrl.close();
     }else if(kib === 'kibe'){
-      this.nav.push(CarddataPage);
+      this.nav.push('CarddataPage');
 
       this.storage.ready().then(() => {
         this.storage.set('pageSession', '90');
@@ -149,7 +155,7 @@ export class MyApp {
 
       this.menuCtrl.close();
     }else if(kib === 'kibf'){
-      this.nav.push(CarddataPage);
+      this.nav.push('CarddataPage');
 
       this.storage.ready().then(() => {
         this.storage.set('pageSession', '91');
@@ -160,7 +166,7 @@ export class MyApp {
 
       this.menuCtrl.close();
     }else if(kib === 'kibg'){
-      this.nav.push(CarddataPage);
+      this.nav.push('CarddataPage');
 
       this.storage.ready().then(() => {
         this.storage.set('pageSession', '92');

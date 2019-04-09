@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { App, NavController, NavParams, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { MapslayoutPage } from '../mapslayout/mapslayout';
+// import { MapslayoutPage } from '../mapslayout/mapslayout';
 import { Nav,LoadingController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 import 'rxjs/add/operator/map';
@@ -14,6 +14,9 @@ import 'rxjs/add/operator/toPromise';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
 @Component({
   selector: 'page-kib-g',
   templateUrl: 'kib-g.html',
@@ -25,7 +28,7 @@ export class KibGPage {
   shownGroup : string;
   shownGroup1 : string;
   constructor(public GlobalProvider:GlobalProvider,public platform: Platform, public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public http: Http) {
-
+    this.GlobalProvider.url=localStorage.getItem("server");
     this.plu = navParams.get('plu');
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
@@ -79,7 +82,7 @@ export class KibGPage {
     });
 
     loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/KIBG/data.php?id='+this.plu)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/KIBG/data.php?id='+this.plu)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -95,7 +98,7 @@ export class KibGPage {
 }
 
 maps(idbi){
-  this.navCtrl.push(MapslayoutPage, {
+  this.navCtrl.push('MapslayoutPage', {
     idbi: idbi
   });
 }

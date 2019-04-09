@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController,App } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
-import { DataServiceProvider } from '../../providers/data-service/data-service';
+// import { DataServiceProvider } from '../../providers/data-service/data-service';
 import { Storage } from '@ionic/storage';
 import { Http, Response } from '@angular/http';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { GlobalProvider } from '../../providers/global/global';
 import 'rxjs/add/operator/map';
 /**
@@ -29,16 +29,15 @@ export class SensusPage{
     private barcodeScanner: BarcodeScanner,
     private toast: Toast,
     private storage: Storage,
-    public http: Http,
-    public dataService: DataServiceProvider) {
-
+    public http: Http) {
+      this.GlobalProvider.url=localStorage.getItem("server");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScanerlayoutPage');
     this.storage.get('pageSession').then((val) => {
       console.log('Kamu Memilih Page', val);
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/sensus/dataSensus.php?id='+val)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/sensus/dataSensus.php?id='+val)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -61,7 +60,7 @@ export class SensusPage{
     this.barcodeScanner.scan(options).then((barcodeData) => {
 
       this.storage.get('pageSession').then((val) => {
-        return this.http.get(this.GlobalProvider.url+'atis/pages/api/api/sensus/dataSensus.php?search='+barcodeData.text)
+        return this.http.get(this.GlobalProvider.url+'pages/api/api/sensus/dataSensus.php?search='+barcodeData.text)
         .map((response:Response)=>response.json())
         .subscribe((response)=> {
           this.products = response
@@ -94,7 +93,7 @@ export class SensusPage{
 
 
   home(){
-    this.appCtrl.getRootNav().setRoot(HomePage);
+    this.appCtrl.getRootNav().setRoot('HomePage');
   }
 
 

@@ -4,10 +4,13 @@ import { KibBPage } from './kib-b';
 
 @NgModule({
   declarations: [
-    KibBPage,
+    KibBPage
   ],
   imports: [
-    IonicPageModule.forChild(KibBPage),
+    IonicPageModule.forChild(KibBPage)
   ],
+  entryComponents: [
+    KibBPage
+  ]
 })
 export class KibBPageModule {}

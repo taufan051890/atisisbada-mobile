@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { KibCPage } from './kib-c';
-
 @NgModule({
   declarations: [
-    KibCPage,
+    KibCPage
   ],
   imports: [
-    IonicPageModule.forChild(KibCPage),
+    IonicPageModule.forChild(KibCPage)
   ],
+  entryComponents: [
+    KibCPage
+  ]
 })
 export class KibCPageModule {}

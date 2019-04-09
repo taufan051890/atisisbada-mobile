@@ -4,10 +4,13 @@ import { SortPage } from './sort';
 
 @NgModule({
   declarations: [
-    SortPage,
+    SortPage
   ],
   imports: [
-    IonicPageModule.forChild(SortPage),
+    IonicPageModule.forChild(SortPage)
   ],
+  entryComponents: [
+    SortPage
+  ]
 })
 export class SortPageModule {}

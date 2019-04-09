@@ -4,12 +4,12 @@ import { ActionSheetController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Rekap6Page } from '../rekap6/rekap6';
-import { RekapDetailPage } from '../rekap-detail/rekap-detail';
+// import { Rekap6Page } from '../rekap6/rekap6';
+// import { RekapDetailPage } from '../rekap-detail/rekap-detail';
 import { ModalController } from 'ionic-angular';
-import { CariSkpdPage } from '../cari-skpd/cari-skpd';
+// import { CariSkpdPage } from '../cari-skpd/cari-skpd';
 import { PopoverController} from 'ionic-angular';
-import { PopoverHomePage } from '../popover-home/popover-home';
+// import { PopoverHomePage } from '../popover-home/popover-home';
 import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the RekapPage page.
@@ -60,7 +60,7 @@ export class Rekap5Page {
     this.dnama = navParams.get('dnama');
     this.enama = navParams.get('enama');
     this.e1nama = navParams.get('e1nama');
-
+    this.GlobalProvider.url=localStorage.getItem("server");
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
       });
@@ -71,7 +71,7 @@ export class Rekap5Page {
       var myarr = mystr.split(".");
       this.search = '&c1='+myarr[0]+'&c='+myarr[1]+'&d='+myarr[2]+'&e='+myarr[3]+'&e1='+myarr[4];
 
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/nmSKPD.php?'+this.search)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/nmSKPD.php?'+this.search)
       .map(result => result.json())
       .subscribe(nmSKPD => {
         this.nmSKPD = nmSKPD.result;
@@ -115,12 +115,12 @@ export class Rekap5Page {
   };
 
   cariSkpd(){
-    const modal = this.modalCtrl.create(CariSkpdPage);
+    const modal = this.modalCtrl.create('CariSkpdPage');
     modal.present();
   }
 
   openPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverHomePage);
+    let popover = this.popoverCtrl.create('PopoverHomePage');
     popover.present({
       ev: myEvent
     });
@@ -134,7 +134,7 @@ export class Rekap5Page {
     var myarr = mystr.split(".");
     this.search = '&c1='+myarr[0]+'&c='+myarr[1]+'&d='+myarr[2]+'&e='+myarr[3]+'&e1='+myarr[4];
 
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/nmSKPD.php?'+this.search)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/nmSKPD.php?'+this.search)
     .map(result => result.json())
     .subscribe(nmSKPD => {
       this.nmSKPD = nmSKPD.result;
@@ -156,7 +156,7 @@ export class Rekap5Page {
     });
 
     loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/rekap/rekap.php?'+"&f="+this.f+"&g="+this.g+"&h="+this.h+"&i="+this.i)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/rekap/rekap.php?'+"&f="+this.f+"&g="+this.g+"&h="+this.h+"&i="+this.i)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -179,7 +179,7 @@ export class Rekap5Page {
           text: 'Lihat Selanjutnya',
           role: 'destructive',
           handler: () => {
-            this.navCtrl.push(Rekap6Page, {
+            this.navCtrl.push('Rekap6Page', {
               f: f,
               g: g,
               h: h,
@@ -198,7 +198,7 @@ export class Rekap5Page {
           icon: !this.platform.is('md') ? 'clipboard' : null,
            text: 'Total Harga & Jumlah Barang',
           handler: () => {
-            const modal = this.modalCtrl.create(RekapDetailPage, {
+            const modal = this.modalCtrl.create('RekapDetailPage', {
               f: f,
               g: g,
               h: h,

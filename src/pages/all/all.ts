@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,NgModule } from '@angular/core';
 import { App, NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 // import { ToastController } from 'ionic-angular';
@@ -27,7 +27,7 @@ import { HomePage } from '../home/home';
  * Ionic pages and navigation.
  */
 
-
+@NgModule()
 @Component({
   selector: 'page-all',
   templateUrl: 'all.html'
@@ -83,7 +83,7 @@ export class AllPage {
 
           this.storage.get('pageSession').then((val) => {
             console.log('Kamu Memilih Page', val);
-          this.http.get('http://123.231.253.228/atis/pages/api/api/menu/allPageMenu.php?id='+val)
+          this.http.get('http://123.231.253.228/pages/api/api/menu/allPageMenu.php?id='+val)
           .subscribe(data => {
             var obj = JSON.parse(data["_body"]);
 
@@ -92,11 +92,11 @@ export class AllPage {
 
               if(obj.layout === "basic_menu"){
                 this.navCtrl.push(BasiclayoutPage);
-                this.http.get('http://123.231.253.228/atis/pages/api/api/basicPage/basicPage.php?id='+val)
+                this.http.get('http://123.231.253.228/pages/api/api/basicPage/basicPage.php?id='+val)
               }else if(obj.layout === "card_menu"){
 
                 this.navCtrl.push(CardlayoutPage);
-                this.http.get('http://123.231.253.228/atis/pages/api/api/cardPage/cardPage.php?id='+val)
+                this.http.get('http://123.231.253.228/pages/api/api/cardPage/cardPage.php?id='+val)
 
               }else if(obj.layout === "maps"){
 

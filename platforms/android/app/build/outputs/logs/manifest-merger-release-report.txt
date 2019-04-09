@@ -43,7 +43,7 @@ INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidMa
 INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:1-36:12
 INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:1-36:12
 	package
-		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:98-127
+		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:98-138
 		INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml
 	android:versionName
@@ -53,7 +53,7 @@ INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidMa
 	android:hardwareAccelerated
 		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:11-45
 	xmlns:android
-		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:128-186
+		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:139-197
 	android:versionCode
 		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:2:46-69
 		INJECTED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml
@@ -88,7 +88,7 @@ MERGED from [:barcodescanner-release-2.1.5:] C:\Users\FUJIN\.gradle\caches\trans
 		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:5:18-52
 	android:icon
 		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:5:53-80
-activity#io.ionic.atisisbada.MainActivity
+activity#com.atisisbada.mobiletangerang.MainActivity
 ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:6:9-11:20
 	android:label
 		ADDED from C:\Users\FUJIN\Atisisbada\platforms\android\app\src\main\AndroidManifest.xml:6:97-134

@@ -4,10 +4,13 @@ import { RekapDetailPage } from './rekap-detail';
 
 @NgModule({
   declarations: [
-    RekapDetailPage,
+    RekapDetailPage
   ],
   imports: [
-    IonicPageModule.forChild(RekapDetailPage),
+    IonicPageModule.forChild(RekapDetailPage)
   ],
+  entryComponents: [
+    RekapDetailPage
+  ]
 })
 export class RekapDetailPageModule {}

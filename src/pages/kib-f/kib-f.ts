@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { App, NavController, NavParams, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { MapslayoutPage } from '../mapslayout/mapslayout';
+// import { MapslayoutPage } from '../mapslayout/mapslayout';
 import { Nav,LoadingController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 import 'rxjs/add/operator/map';
@@ -14,7 +14,9 @@ import 'rxjs/add/operator/toPromise';
  * Ionic pages and navigation.
  */
 
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-kib-f',
   templateUrl: 'kib-f.html',
@@ -26,7 +28,7 @@ export class KibFPage {
   shownGroup : string;
   shownGroup1 : string;
   constructor(public GlobalProvider:GlobalProvider,public platform: Platform, public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public http: Http) {
-
+    this.GlobalProvider.url=localStorage.getItem("server");
     this.plu = navParams.get('plu');
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
@@ -80,7 +82,7 @@ export class KibFPage {
     });
 
     loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/KIBF/data.php?id='+this.plu)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/KIBF/data.php?id='+this.plu)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -96,7 +98,7 @@ export class KibFPage {
 }
 
 maps(idbi, table){
-  this.navCtrl.push(MapslayoutPage, {
+  this.navCtrl.push('MapslayoutPage', {
     idbi: idbi,
     table : table
   });

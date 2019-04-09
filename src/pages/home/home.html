@@ -40,7 +40,7 @@
               <ion-slides [ngClass]="animateClass" *ngIf="dataBanner && dataBanner.length"  autoplay="5000" loop="true" pager>
 
                   <ion-slide *ngFor="let itemBanner of dataBanner">
-                    <img src="{{ urlService }}atis/pages/api/api/images/Colored/{{ itemBanner.image }}">
+                    <img src="{{ urlService }}/pages/api/api/images/Colored/{{ itemBanner.image }}">
                   </ion-slide>
                 
                 
@@ -65,7 +65,7 @@
             </ion-item>
            </form> -->
 
-                <img src="{{ urlService }}atis/pages/api/api/images/Colored/{{ item.icon }}" style="width: 100%;padding: 30%;margin-top: -18%;"/>
+                <img src="{{ urlService }}/pages/api/api/images/Colored/{{ item.icon }}" style="width: 100%;padding: 30%;margin-top: -18%;"/>
             <ion-card-content style="height: 53px;min-height: 53px;">
               <ion-card-title style="color: black; ">
                {{ item.nama }}

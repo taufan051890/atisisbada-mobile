@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { App, NavController, NavParams, Platform } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { MapslayoutPage } from '../mapslayout/mapslayout';
+// import { MapslayoutPage } from '../mapslayout/mapslayout';
 import { Nav,LoadingController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 // import { CarddataPage } from '../carddata/carddata';
@@ -16,7 +16,9 @@ import { Storage } from '@ionic/storage';
  * Ionic pages and navigation.
  */
 
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-kib-a',
   templateUrl: 'kib-a.html',
@@ -31,7 +33,7 @@ export class KibAPage {
 
   constructor(public GlobalProvider:GlobalProvider,storage: Storage,public platform: Platform, public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public appCtrl: App, public http: Http) {
     this.storage = storage;
-
+    this.GlobalProvider.url=localStorage.getItem("server");
     this.plu = navParams.get('plu');
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
@@ -96,7 +98,7 @@ export class KibAPage {
     });
 
     loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/KIBA/data.php?id='+this.plu)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/KIBA/data.php?id='+this.plu)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -112,7 +114,7 @@ export class KibAPage {
 }
 
 maps(idbi, table){
-  this.navCtrl.push(MapslayoutPage, {
+  this.navCtrl.push('MapslayoutPage', {
     idbi: idbi,
     table : table
   });

@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class GlobalProvider {
   public url:string;
   constructor() {
-    this.url = "http://123.231.253.228/";
+    this.url ='http://mobile.tangerang.pilar.web.id/';
 }
 
 urlService(){

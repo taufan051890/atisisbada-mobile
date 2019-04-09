@@ -1,6 +1,6 @@
 import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,App, Platform } from 'ionic-angular';
-import { AllPage } from '../all/all';
+// import { AllPage } from '../all/all';
 import { Nav,LoadingController  } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { ToastController } from 'ionic-angular';
@@ -9,22 +9,22 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { SearchPage } from '../search/search';
-import { SortPage } from '../sort/sort';
+// import { SearchPage } from '../search/search';
+// import { SortPage } from '../sort/sort';
 import { GlobalProvider } from '../../providers/global/global';
 
 import { PhotoViewer } from '@ionic-native/photo-viewer';
-import { KibAPage } from '../kib-a/kib-a';
-import { KibBPage } from '../kib-b/kib-b';
-import { KibCPage } from '../kib-c/kib-c';
-import { KibDPage } from '../kib-d/kib-d';
-import { KibEPage } from '../kib-e/kib-e';
-import { KibFPage } from '../kib-f/kib-f';
-import { KibGPage } from '../kib-g/kib-g';
-import { HomePage } from '../home/home';
+// import { KibAPage } from '../kib-a/kib-a';
+// import { KibBPage } from '../kib-b/kib-b';
+// import { KibCPage } from '../kib-c/kib-c';
+// import { KibDPage } from '../kib-d/kib-d';
+// import { KibEPage } from '../kib-e/kib-e';
+// import { KibFPage } from '../kib-f/kib-f';
+// import { KibGPage } from '../kib-g/kib-g';
+// import { HomePage } from '../home/home';
 import { ActionSheetController } from 'ionic-angular';
 import { PopoverController} from 'ionic-angular';
-import { PopoverHomePage } from '../popover-home/popover-home';
+// import { PopoverHomePage } from '../popover-home/popover-home';
 import { MenuController } from 'ionic-angular';
 
 /**
@@ -34,10 +34,12 @@ import { MenuController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 // private toastCtrl: ToastController,
+
 @IonicPage()
 @Component({
   selector: 'page-carddata',
   templateUrl: 'carddata.html',
+  styles:['carddata.scss']
 })
 export class CarddataPage {
   @ViewChild(Nav) nav: Nav;
@@ -71,8 +73,9 @@ export class CarddataPage {
     this.skpd = navParams.get('skpd');
     this.kodeBarangRekap = navParams.get('kodeBarangRekap');
 
-    this.urlService = this.GlobalProvider.url;
-
+    this.urlService = localStorage.getItem("server");
+    this.GlobalProvider.url=localStorage.getItem("server");
+    
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
       });
@@ -84,7 +87,7 @@ export class CarddataPage {
   myHandlerFunction(){
     // this.navCtrl.popTo(this.navCtrl.getByIndex(this.navCtrl.length()-3));
     // this.navCtrl.push(HomePage);
-    this.appCtrl.getRootNav().setRoot(HomePage);
+    this.appCtrl.getRootNav().setRoot('HomePage');
     this.menuCtrl.close();
    }
 
@@ -92,7 +95,7 @@ export class CarddataPage {
     console.log('Started', refresher);
     setTimeout(() => {
         console.log('Async operation has ended');
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
         refresher.complete();
     }, 3000);
 
@@ -112,7 +115,7 @@ export class CarddataPage {
   }
   
   openPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverHomePage);
+    let popover = this.popoverCtrl.create('PopoverHomePage');
     popover.present({
       ev: myEvent
     });
@@ -125,7 +128,7 @@ export class CarddataPage {
 
     loader.present().then(() => {
       this.storage.get('pageSession').then((val) => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/galery/galery2.php?id='+val)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/galery/galery2.php?id='+val)
       .map(result => result.json())
       .subscribe(dataGalery => {
         this.dataGalery = dataGalery.result;
@@ -171,7 +174,7 @@ export class CarddataPage {
     let loader = this.loadingCtrl.create({
       content: 'Load Data...',
     });
-    var link = this.GlobalProvider.url+'atis/pages/api/api/hapusGambar/hapusGambar.php';
+    var link = this.GlobalProvider.url+'pages/api/api/hapusGambar/hapusGambar.php';
     var myData = JSON.stringify({gambar:  url, id: id });
     // this.loadImageGallery();
 
@@ -195,8 +198,8 @@ export class CarddataPage {
   }
   
   viewImage(url){
-    this.photoViewer.show(this.GlobalProvider.url+'atis/pages/api/api/images/Colored/'+url);
-    console.log(this.GlobalProvider.url+'atis/pages/api/api/images/Colored/'+url);
+    this.photoViewer.show(this.GlobalProvider.url+'pages/api/api/images/Colored/'+url);
+    console.log(this.GlobalProvider.url+'pages/api/api/images/Colored/'+url);
   }
 
   action(url,id) {
@@ -246,6 +249,7 @@ export class CarddataPage {
       quality: 40, // picture quality
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
+      allowEdit: true,
       mediaType: this.camera.MediaType.PICTURE
     }
     // this.presentLoading();
@@ -257,7 +261,7 @@ export class CarddataPage {
         this.photos.reverse();
         var hasil = this.base64Image;
 
-        var link = this.GlobalProvider.url+'atis/pages/api/api/upload/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         // this.loadUser('hilih');
         // this.loadImageGallery();
@@ -305,7 +309,7 @@ export class CarddataPage {
         this.photos.reverse();
         var hasil = this.base64Image;
 
-        var link = this.GlobalProvider.url+'atis/pages/api/api/upload/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         // this.loadUser('hilih');
         // this.loadImageGallery();
@@ -363,7 +367,7 @@ if(infiniteScroll === 'hilih'){
     }else{
       dataSort = this.sortS;
     }
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/cardData/cardData.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+pages+dataSort+dataSearch)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/cardData/cardData.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+pages+dataSort+dataSearch)
     .map(result => result.json())
     .subscribe(data => {
 
@@ -406,7 +410,7 @@ this.storage.get('pageSession').then((val) => {
     dataSort = this.sortS;
   }
   this.presentLoading();
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/galery/galery2.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+pages+dataSort+dataSearch)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/galery/galery2.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+pages+dataSort+dataSearch)
   .map(result => result.json())
   .subscribe(dataGalery => {
     this.dataGalery = dataGalery.result;
@@ -446,7 +450,7 @@ this.storage.get('pageSession').then((val) => {
       dataSort = this.sortS;
     }
 
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/cardData/cardData.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+this.pages+dataSort+dataSearch)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/cardData/cardData.php?id='+val+'&skpdSession'+localStorage.getItem("skpdSession")+'&skpd='+localStorage.getItem("skpdOperator")+'&skpdRekap='+this.skpd+'&kodeBarangRekap='+this.kodeBarangRekap+'&page='+this.pages+dataSort+dataSearch)
     .map(result => result.json())
     .subscribe(data => {
 
@@ -497,8 +501,8 @@ this.storage.get('pageSession').then((val) => {
   }
 
 
-  // this.http.get(this.GlobalProvider.url+'atis/pages/api/api/galery/galery2.php?id='+val+'&page='+pages+dataSort+dataSearch)
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/galery/galery2.php?id='+val+dataSort+dataSearch)
+  // this.http.get(this.GlobalProvider.url+'pages/api/api/galery/galery2.php?id='+val+'&page='+pages+dataSort+dataSearch)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/galery/galery2.php?id='+val+dataSort+dataSearch)
   .map(result => result.json())
   .subscribe(dataGalery => {
     this.dataGalery = dataGalery.result;
@@ -551,7 +555,7 @@ this.storage.get('pageSession').then((val) => {
   
 
   page(id) {
-    var link = this.GlobalProvider.url+'atis/pages/api/api/menu/pageMenu.php';
+    var link = this.GlobalProvider.url+'pages/api/api/menu/pageMenu.php';
 
     this.dataCode.id = id;
     var myData = JSON.stringify({
@@ -563,7 +567,7 @@ this.storage.get('pageSession').then((val) => {
        //https://stackoverflow.com/questions/39574305/property-body-does-not-exist-on-type-response
       var obj = JSON.parse(dataCode["_body"]);
       if(obj.id === "1"){
-        this.navCtrl.push(AllPage);
+        this.navCtrl.push('AllPage');
         this.storage.ready().then(() => {
           this.storage.set('pageSession', obj.pageSession);
         });
@@ -602,58 +606,58 @@ presentToast(response) {
   // }
 
   home(){
-    this.appCtrl.getRootNav().setRoot(HomePage);
+    this.appCtrl.getRootNav().setRoot('HomePage');
    }
 
   search(){
-    this.navCtrl.push(SearchPage);
+    this.navCtrl.push('SearchPage');
   }
 
   sort(){
-    this.navCtrl.push(SortPage);
+    this.navCtrl.push('SortPage');
   }
 
   view(table,id){
   
     if(table == 'view_kib_a'){
       
-        this.navCtrl.push(KibAPage, {
+        this.navCtrl.push('KibAPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_b'){
       
-        this.navCtrl.push(KibBPage, {
+        this.navCtrl.push('KibBPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_c'){
     
-        this.navCtrl.push(KibCPage, {
+        this.navCtrl.push('KibCPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_d'){
     
-        this.navCtrl.push(KibDPage, {
+        this.navCtrl.push('KibDPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_e'){
     
-        this.navCtrl.push(KibEPage, {
+        this.navCtrl.push('KibEPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_f'){
       
-        this.navCtrl.push(KibFPage, {
+        this.navCtrl.push('KibFPage', {
           plu: id
         });
 
     }else if(table == 'view_kib_g'){
       
-        this.navCtrl.push(KibGPage, {
+        this.navCtrl.push('KibGPage', {
           plu: id
         });
 

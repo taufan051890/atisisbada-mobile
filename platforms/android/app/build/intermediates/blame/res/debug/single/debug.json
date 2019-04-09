@@ -8,20 +8,20 @@
         "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\drawable-port-ldpi\\screen.png"
     },
     {
-        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_icon.png.flat",
-        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\mipmap-xhdpi\\icon.png"
-    },
-    {
-        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
-        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
+        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-mdpi_screen.png.flat",
+        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\drawable-land-mdpi\\screen.png"
     },
     {
         "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media.xml.flat",
         "source": "C:\\Users\\FUJIN\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\868e180c4091f0e190e4008769ebda34\\res\\layout\\notification_template_big_media.xml"
     },
     {
-        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-mdpi_screen.png.flat",
-        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\drawable-land-mdpi\\screen.png"
+        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
+        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
+    },
+    {
+        "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_icon.png.flat",
+        "source": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\src\\main\\res\\mipmap-xhdpi\\icon.png"
     },
     {
         "merged": "C:\\Users\\FUJIN\\Atisisbada\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16_notification_template_custom_big.xml.flat",

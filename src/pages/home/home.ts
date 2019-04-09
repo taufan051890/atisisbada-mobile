@@ -9,19 +9,23 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+// import { AboutPage } from '../about/about';
+// import { ContactPage } from '../contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { PopoverController} from 'ionic-angular';
-import { PopoverHomePage } from '../popover-home/popover-home';
+// import { PopoverHomePage } from '../popover-home/popover-home';
 import { GlobalProvider } from '../../providers/global/global';
-import { ScanerlayoutPage } from '../scanerlayout/scanerlayout';
-import { ScanerqrlayoutPage } from '../scanerqrlayout/scanerqrlayout';
-import { CarddataPage } from '../carddata/carddata';
-import { LoginPage } from '../login/login';
+// import { ScanerlayoutPage } from '../scanerlayout/scanerlayout';
+// import { ScanerqrlayoutPage } from '../scanerqrlayout/scanerqrlayout';
+// import { CarddataPage } from '../carddata/carddata';
+// import { LoginPage } from '../login/login';
 import { AlertController } from 'ionic-angular';
-import { SensusPage } from '../sensus/sensus';
-import { RekapPage } from '../rekap/rekap';
+// import { SensusPage } from '../sensus/sensus';
+// import { RekapPage } from '../rekap/rekap';
+
+import { IonicPage } from 'ionic-angular';
+
+@IonicPage()
 
 @Component({
   selector: 'page-home',
@@ -41,7 +45,8 @@ export class HomePage {
     this.dataCode.response = '';
     this.animateClass = { 'zoom-in': true };
     this.http = http;
-    this.urlService = this.GlobalProvider.url;
+    this.urlService = localStorage.getItem("server");
+    this.GlobalProvider.url=localStorage.getItem("server");
     platform.ready().then(() => {
       statusBar.styleDefault();
       splashScreens.hide();
@@ -65,18 +70,18 @@ export class HomePage {
     console.log('Started', refresher);
     setTimeout(() => {
         console.log('Async operation has ended');
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push('HomePage');
         refresher.complete();
     }, 3000);
 
 }
 
   Sensus(){
-    this.appCtrl.getRootNav().setRoot(SensusPage);
+    this.appCtrl.getRootNav().setRoot('SensusPage');
   }
 
   Rekap(){
-    this.navCtrl.push(RekapPage);
+    this.navCtrl.push('RekapPage');
   }
   exitToast() {
     let toast = this.toastCtrl.create({
@@ -88,7 +93,7 @@ export class HomePage {
   }
 
   openPopover(myEvent) {
-    let popover = this.popoverCtrl.create(PopoverHomePage);
+    let popover = this.popoverCtrl.create('PopoverHomePage');
     popover.present({
       ev: myEvent
     });
@@ -114,7 +119,7 @@ export class HomePage {
 
           loader.present().then(() => {
             this.bannerLoad();
-            this.http.get(this.GlobalProvider.url+'atis/pages/api/api/menu/dataMenu.php')
+            this.http.get(this.GlobalProvider.url+'pages/api/api/menu/dataMenu.php')
             .map(result => result.json())
             .subscribe(data => {
               this.data = data.result;
@@ -136,7 +141,7 @@ export class HomePage {
         });
 
         loader.present().then(() => {
-          this.http.get(this.GlobalProvider.url+'atis/pages/api/api/banner/banner.php')
+          this.http.get(this.GlobalProvider.url+'pages/api/api/banner/banner.php')
           .map(result => result.json())
           .subscribe(dataBanner => {
             this.dataBanner = dataBanner.result;
@@ -154,7 +159,7 @@ export class HomePage {
 
       // loadUser(){
       //     this.presentLoading();
-      //     this.http.get('http://123.231.253.228/atis/pages/api/api/menu/dataMenu.php')
+      //     this.http.get('http://123.231.253.228/pages/api/api/menu/dataMenu.php')
       //     .map(result => result.json())
       //     .subscribe(data => {
       //       this.data = data.result;
@@ -171,7 +176,7 @@ export class HomePage {
     //       this.storage.set('backPage', 'back2');
     //     });
 
-    //     var link = this.GlobalProvider.url+'atis/pages/api/api/menu/pageMenu.php';
+    //     var link = this.GlobalProvider.url+'pages/api/api/menu/pageMenu.php';
 
     //     this.dataCode.id = id;
     //     var myData = JSON.stringify({
@@ -205,7 +210,7 @@ export class HomePage {
 
     page(kib){
       if(kib === '95'){
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '95');
@@ -215,7 +220,7 @@ export class HomePage {
         });
   
       }else if(kib === '87'){
-          this.navCtrl.push(CarddataPage);
+          this.navCtrl.push('CarddataPage');
     
           this.storage.ready().then(() => {
             this.storage.set('pageSession', '87');
@@ -225,7 +230,7 @@ export class HomePage {
           });
     
       }else if(kib === '88'){
-          this.navCtrl.push(CarddataPage);
+          this.navCtrl.push('CarddataPage');
   
           this.storage.ready().then(() => {
             this.storage.set('pageSession', '88');
@@ -235,7 +240,7 @@ export class HomePage {
           });
   
       }else if(kib === '89'){
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '89');
@@ -245,7 +250,7 @@ export class HomePage {
         });
 
       }else if(kib === '90'){
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '90');
@@ -255,7 +260,7 @@ export class HomePage {
         });
   
       }else if(kib === '91'){
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '91');
@@ -265,7 +270,7 @@ export class HomePage {
         });
   
       }else if(kib === '92'){
-        this.navCtrl.push(CarddataPage);
+        this.navCtrl.push('CarddataPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '92');
@@ -275,7 +280,7 @@ export class HomePage {
         });
   
       }else if(kib === '93'){
-        this.navCtrl.push(ScanerqrlayoutPage);
+        this.navCtrl.push('ScanerqrlayoutPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '93');
@@ -285,7 +290,7 @@ export class HomePage {
         });
   
       }else if(kib === '94'){
-        this.navCtrl.push(ScanerlayoutPage);
+        this.navCtrl.push('ScanerlayoutPage');
   
         this.storage.ready().then(() => {
           this.storage.set('pageSession', '94');
@@ -301,11 +306,11 @@ export class HomePage {
 
     route(route){
       if(route=="profile"){
-        this.navCtrl.push(ContactPage);
+        this.navCtrl.push('ContactPage');
       }else if(route =="about"){
-        this.navCtrl.push(AboutPage);
+        this.navCtrl.push('AboutPage');
       }else{
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push('HomePage');
       }
     }
   
@@ -341,7 +346,8 @@ export class HomePage {
               console.log('Agree clicked');
               localStorage.setItem("username","logout");
               localStorage.removeItem("skpdSession");
-              this.appCtrl.getRootNav().setRoot(LoginPage);
+              localStorage.removeItem("server");
+              this.appCtrl.getRootNav().setRoot('LoginPage');
             }
           }
         ]

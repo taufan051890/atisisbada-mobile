@@ -25,7 +25,7 @@ export class ListlayoutPage {
 
 
   initializeItems() {
-      this.http.get('http://123.231.253.228/atis/pages.php?Pg=api&tipe=2')
+      this.http.get('http://123.231.253.228/pages.php?Pg=api&tipe=2')
       .map(content => content.json())
       .subscribe(data => {
         this.information = data.content;

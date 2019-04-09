@@ -68,7 +68,7 @@
   <ion-slides pager *ngIf="item.namaPage != 'Data Page Tidak Ada!'">
     <div *ngFor="let itemGalery of dataGalery">
         <ion-slide *ngIf="item.plu == itemGalery.id_menu" class="crop">
-            <img (click)="action(itemGalery.gambar,itemGalery.id_menu)" src="{{ urlService }}atis/pages/api/api/images/Colored/{{ itemGalery.gambar }}" />
+            <img (click)="action(itemGalery.gambar,itemGalery.id_menu)" src="{{ urlService }}/pages/api/api/images/Colored/{{ itemGalery.gambar }}" />
         </ion-slide>
     </div>
     <div>

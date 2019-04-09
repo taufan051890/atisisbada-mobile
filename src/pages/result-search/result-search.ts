@@ -80,7 +80,7 @@ export class ResultSearchPage {
         this.photos.reverse();
         var hasil = this.photos.reverse();
 
-        var link = 'http://123.231.253.228/atis/pages/api/api/upload/upload.php';
+        var link = 'http://123.231.253.228/pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.loadUser();
         this.http.post(link, myData)
@@ -120,7 +120,7 @@ export class ResultSearchPage {
         this.photos.reverse();
         var hasil = this.photos.reverse();
 
-        var link = 'http://123.231.253.228/atis/pages/api/api/upload/upload.php';
+        var link = 'http://123.231.253.228/pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.loadUser();
         this.http.post(link, myData)
@@ -154,7 +154,7 @@ export class ResultSearchPage {
       loader.present().then(() => {
       this.storage.get('pageSession').then((val) => {
       console.log('Kamu Memilih Page', val);
-      this.http.get('http://123.231.253.228/atis/pages/api/api/cardData/cardData.php?id='+val)
+      this.http.get('http://123.231.253.228/pages/api/api/cardData/cardData.php?id='+val)
       .map(result => result.json())
       .subscribe(data => {
 
@@ -175,7 +175,7 @@ export class ResultSearchPage {
   this.storage.get('pageSession').then((val) => {
     console.log('Kamu Memilih Page', val);
     this.presentLoading();
-    this.http.get('http://123.231.253.228/atis/pages/api/api/galery/galery2.php?id='+val)
+    this.http.get('http://123.231.253.228/pages/api/api/galery/galery2.php?id='+val)
     .map(result => result.json())
     .subscribe(dataGalery => {
       this.dataGalery = dataGalery.result;
@@ -191,7 +191,7 @@ export class ResultSearchPage {
   }
 
   page(id) {
-    var link = 'http://123.231.253.228/atis/pages/api/api/menu/pageMenu.php';
+    var link = 'http://123.231.253.228/pages/api/api/menu/pageMenu.php';
 
     this.dataCode.id = id;
     var myData = JSON.stringify({

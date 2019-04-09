@@ -4,10 +4,13 @@ import { CarddataPage } from './carddata';
 
 @NgModule({
   declarations: [
-    CarddataPage,
+    CarddataPage
   ],
   imports: [
-    IonicPageModule.forChild(CarddataPage),
+    IonicPageModule.forChild(CarddataPage)
   ],
+  entryComponents: [
+    CarddataPage
+  ]
 })
 export class CarddataPageModule {}

@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
 import { LoadingController  } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ToastController } from 'ionic-angular';
-import { CarddataPage } from '../carddata/carddata';
+// import { CarddataPage } from '../carddata/carddata';
 import { GlobalProvider } from '../../providers/global/global';
 
 /**
@@ -48,6 +48,9 @@ export class SearchPage {
   hargaMulai:string;
   hargaEnd:string;
   constructor(public GlobalProvider:GlobalProvider,public appCtrl: App, public platform: Platform,private camera : Camera,private toastCtrl: ToastController,public http: Http,public navCtrl: NavController, public navParams: NavParams,private storage: Storage,public loadingCtrl: LoadingController) {
+
+    this.GlobalProvider.url=localStorage.getItem("server");
+   
     this.datas.field1 = '';
     this.datas.field2 = '';
     this.datas.field3 = '';
@@ -117,7 +120,7 @@ export class SearchPage {
           this.dataSelect.subunit = myarr[4];
   
           loader.present().then(() => {
-            this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
+            this.http.get(this.GlobalProvider.url+'pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
             .map(result => result.json())
             .subscribe(dataBidang => {
         
@@ -128,7 +131,7 @@ export class SearchPage {
               console.log(err);
             });
   
-            this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
+            this.http.get(this.GlobalProvider.url+'pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
             .map(result => result.json())
             .subscribe(dataSKPD => {
           
@@ -139,7 +142,7 @@ export class SearchPage {
               console.log(err);
             });
   
-            this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
+            this.http.get(this.GlobalProvider.url+'pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
             .map(result => result.json())
             .subscribe(dataUnit => {
             
@@ -151,7 +154,7 @@ export class SearchPage {
             });
   
   
-            this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
+            this.http.get(this.GlobalProvider.url+'pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
             .map(result => result.json())
             .subscribe(dataSubUnit => {
             
@@ -168,7 +171,7 @@ export class SearchPage {
 
   myHandlerFunction(){
     // this.navCtrl.popTo(this.navCtrl.getByIndex(this.navCtrl.length()-2));
-    this.navCtrl.push(CarddataPage);
+    this.navCtrl.push('CarddataPage');
    }
 
   presentLoading() {
@@ -204,7 +207,7 @@ export class SearchPage {
         loader.present().then(() => {
         this.storage.get('pageSession').then((val) => {
         console.log('Kamu Memilih Page', val);
-        this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/search2.php?id='+val)
+        this.http.get(this.GlobalProvider.url+'pages/api/api/search/search2.php?id='+val)
         .map(result => result.json())
         .subscribe(data => {
   
@@ -231,7 +234,7 @@ export class SearchPage {
         console.log(linkSkpd);
       }
 
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/urusan.php'+linkSkpd)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/search/urusan.php'+linkSkpd)
       .map(result => result.json())
       .subscribe(dataUrusan => {
 
@@ -248,7 +251,7 @@ export class SearchPage {
 
   this.storage.get('pageSession').then((val) => {
     console.log('Kamu Memilih Page', val);
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/kabupatenKota.php')
+    this.http.get(this.GlobalProvider.url+'pages/api/api/search/kabupatenKota.php')
     .map(result => result.json())
     .subscribe(dataKota => {
 
@@ -297,7 +300,7 @@ export class SearchPage {
     this.storage.get('pageSession').then((val) => {
       console.log('Kamu Memilih Page', val);
       this.presentLoading();
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/galery/galery2.php?id='+val)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/galery/galery2.php?id='+val)
       .map(result => result.json())
       .subscribe(dataGalery => {
         this.dataGalery = dataGalery.result;
@@ -340,7 +343,7 @@ export class SearchPage {
         this.photos.reverse();
         var hasil = this.photos.reverse();
 
-        var link = this.GlobalProvider.url+'atis/pages/api/api/upload/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.submit(table);
         this.http.post(link, myData)
@@ -381,7 +384,7 @@ export class SearchPage {
         this.photos.reverse();
         var hasil = this.photos.reverse();
 
-        var link = this.GlobalProvider.url+'atis/pages/api/api/upload/upload.php';
+        var link = this.GlobalProvider.url+'pages/api/api/upload/upload.php';
         var myData = JSON.stringify({gambar:  hasil, id: id });
         this.submit(table);
         this.http.post(link, myData)
@@ -423,7 +426,7 @@ export class SearchPage {
         console.log(linkSkpd);
       }
       loader.present().then(() => {
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/search/bidang.php?c1='+this.dataSelect.urusan+linkSkpd)
       .map(result => result.json())
       .subscribe(dataBidang => {
 
@@ -439,7 +442,7 @@ export class SearchPage {
 
     changeKec(id_kota){
 
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/kecamatan.php?kd_kota='+this.dataSelect.kota)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/search/kecamatan.php?kd_kota='+this.dataSelect.kota)
     .map(result => result.json())
     .subscribe(dataKec => {
 
@@ -471,7 +474,7 @@ export class SearchPage {
       console.log(linkSkpd);
     }
     loader.present().then(() => {
-    this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
+    this.http.get(this.GlobalProvider.url+'pages/api/api/search/SKPD.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+linkSkpd)
     .map(result => result.json())
     .subscribe(dataSKPD => {
 
@@ -501,7 +504,7 @@ changeUnit(){
     console.log(linkSkpd);
   }
   loader.present().then(() => {
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/search/unit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+linkSkpd)
   .map(result => result.json())
   .subscribe(dataUnit => {
 
@@ -532,7 +535,7 @@ SubUnit(){
 
   console.log('sub unit');
   loader.present().then(() => {
-  this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
+  this.http.get(this.GlobalProvider.url+'pages/api/api/search/subunit.php?c1='+this.dataSelect.urusan+'&c='+this.dataSelect.bidang+'&d='+this.dataSelect.SKPD+'&e='+this.dataSelect.unit+linkSkpd)
   .map(result => result.json())
   .subscribe(dataSubUnit => {
 
@@ -549,7 +552,7 @@ SubUnit(){
   submit(table) {
     this.storage.get('pageSession').then((val) => {
     console.log('Kamu Memilih Page', val);
-    var link = this.GlobalProvider.url+'atis/pages/api/api/search/dataSearch.php?id='+ val +'&field1='+ this.datas.field1 +'&field2='+ this.datas.field2 +'&field3='+ this.datas.field3 +'&field4='+ this.datas.field4 +'&field5='+ this.datas.field5 +'&field6='+ this.datas.field6 +'&field7='+ this.datas.field7 +'&field8='+ this.datas.field8 +'&field9='+ this.datas.field9 +'&field10='+ this.datas.field10 +'&field11='+ this.datas.field11 +'&field12='+ this.datas.field12 +'&field13='+ this.datas.field13 +'';
+    var link = this.GlobalProvider.url+'pages/api/api/search/dataSearch.php?id='+ val +'&field1='+ this.datas.field1 +'&field2='+ this.datas.field2 +'&field3='+ this.datas.field3 +'&field4='+ this.datas.field4 +'&field5='+ this.datas.field5 +'&field6='+ this.datas.field6 +'&field7='+ this.datas.field7 +'&field8='+ this.datas.field8 +'&field9='+ this.datas.field9 +'&field10='+ this.datas.field10 +'&field11='+ this.datas.field11 +'&field12='+ this.datas.field12 +'&field13='+ this.datas.field13 +'';
     console.log(link);
     
 
@@ -576,7 +579,11 @@ SubUnit(){
       this.search = 'none';
     }
 
-    if(this.dataSelect.urusan != ''){
+
+
+      if(this.dataSelect.urusan === ''){
+        this.dataSelect.urusan ="00";
+      }
 
       if(this.dataSelect.bidang === ''){
         this.dataSelect.bidang ="00";
@@ -596,10 +603,10 @@ SubUnit(){
       
       localStorage.setItem("skpdSession",this.dataSelect.urusan+'.'+this.dataSelect.bidang+'.'+this.dataSelect.SKPD+'.'+this.dataSelect.unit+'.'+this.dataSelect.subunit);
       console.log("SKPDnya " +localStorage.getItem("skpdSession") );
-    }
+    
 
     // this.ionViewDidLoad(link);
-    this.navCtrl.push(CarddataPage, {
+    this.navCtrl.push('CarddataPage', {
       search: this.search
     });
     });

@@ -7,9 +7,13 @@
       </ion-buttons>
 
     <ion-title>
-      My Profile
+      My Profile 
     </ion-title>
-
+    <ion-buttons end>
+      <a ion-button icon-only (click)="EditData(IdUser,nama)">
+        <ion-icon ios="ios-create" md="md-create"></ion-icon>
+     </a>
+     </ion-buttons>
 
 
   </ion-navbar>
@@ -24,7 +28,7 @@
             <button (click)="UploadImage(item.id)" style="border-radius: 10%;height: 28px;background: white;width:  36px;z-index: 12;border: 1px solid #525252;position:  absolute;">
                 <ion-icon style="color: #3764ab;" ios="ios-camera" md="md-camera"></ion-icon>
               </button>
-          <img (click)="viewImage(item.image)" class="thumbnail" src="{{ urlService }}atis/view_img.php?photoprofil=1&fname={{ item.image }}">
+          <img (click)="viewImage(item.image)" class="thumbnail" src="{{ urlService }}/view_img.php?photoprofil=1&fname={{ item.image }}">
         </div>
       </ion-item>
     </ion-item>

@@ -4,10 +4,13 @@ import { CariSkpdPage } from './cari-skpd';
 
 @NgModule({
   declarations: [
-    CariSkpdPage,
+    CariSkpdPage
   ],
   imports: [
-    IonicPageModule.forChild(CariSkpdPage),
+    IonicPageModule.forChild(CariSkpdPage)
   ],
+  entryComponents: [
+    CariSkpdPage
+  ]
 })
 export class CariSkpdPageModule {}

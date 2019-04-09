@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
-import { CarddataPage } from '../carddata/carddata';
+// import { CarddataPage } from '../carddata/carddata';
 import { GlobalProvider } from '../../providers/global/global';
 /**
  * Generated class for the SortPage page.
@@ -14,7 +14,9 @@ import { GlobalProvider } from '../../providers/global/global';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+import { IonicPage } from 'ionic-angular';
 
+@IonicPage()
 @Component({
   selector: 'page-sort',
   templateUrl: 'sort.html',
@@ -31,7 +33,7 @@ export class SortPage {
     this.dataSelect.harga = '';
     this.datas.kodeBarang = '';
     this.datas.namaBarang = '';
-    
+    this.GlobalProvider.url=localStorage.getItem("server");
     platform.ready().then(()=>{
       platform.registerBackButtonAction(()=>this.myHandlerFunction());
       });
@@ -39,7 +41,7 @@ export class SortPage {
 
   myHandlerFunction(){
     // this.navCtrl.popTo(this.navCtrl.getByIndex(this.navCtrl.length()-2));
-    this.navCtrl.push(CarddataPage);
+    this.navCtrl.push('CarddataPage');
    }
   ionViewDidLoad(){
 
@@ -50,7 +52,7 @@ export class SortPage {
     loader.present().then(() => {
       this.storage.get('pageSession').then((val) => {
         console.log('Kamu Memilih Page', val);
-      this.http.get(this.GlobalProvider.url+'atis/pages/api/api/search/sorting.php?id='+val)
+      this.http.get(this.GlobalProvider.url+'pages/api/api/search/sorting.php?id='+val)
       .map(result => result.json())
       .subscribe(data => {
         this.data = data.result;
@@ -67,7 +69,7 @@ export class SortPage {
 
 kondisi(get,id){
   this.dataGet = '&colums='+ get +'&aksi='+id;
-  this.navCtrl.push(CarddataPage,{
+  this.navCtrl.push('CarddataPage',{
     sort:this.dataGet
   });
   console.log(get + ".kondisi");
@@ -75,7 +77,7 @@ kondisi(get,id){
 
 tertinggi(get){
   this.dataGet = '&colums='+ get +'&aksi=DESC';
-  this.navCtrl.push(CarddataPage,{
+  this.navCtrl.push('CarddataPage',{
     sort:this.dataGet
   });
   console.log(get + ".tertinggi");
@@ -85,7 +87,7 @@ tertinggi(get){
 terendah(get){
 
   this.dataGet = '&colums='+ get +'&aksi=ASC';
-  this.navCtrl.push(CarddataPage,{
+  this.navCtrl.push('CarddataPage',{
     sort:this.dataGet
   });
   console.log(get + ".terendah");
@@ -95,7 +97,7 @@ submit() {
 
   this.dataGet = '&orderKondisiBarang='+ this.dataSelect.kondisiBarang+'&orderThnPerolehan='+ this.dataSelect.thnPerolehan+'&orderLuasTanah='+ this.dataSelect.luasTanah+'&orderHarga='+ this.dataSelect.harga+'&orderKodeBarang='+ this.datas.kodeBarang+'&orderNamaBarang='+ this.datas.namaBarang;
 
-  this.navCtrl.push(CarddataPage,{
+  this.navCtrl.push('CarddataPage',{
     sort:this.dataGet
   });
 }
